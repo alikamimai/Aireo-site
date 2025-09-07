@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aireo Agency — Agencies take weeks. We take minutes.</title>
+  <meta name="description" content="Run a free AI-ready website audit in minutes. Aireo checks SEO + AEO so you show up on Google and in AI tools like ChatGPT." />
+  <link rel="canonical" href="https://aireoagency.com/">
+  <meta property="og:title" content="Aireo Agency — Agencies take weeks. We take minutes.">
+  <meta property="og:description" content="Free SEO + AEO audit. Clear fixes. Private report delivered by email.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aireoagency.com/">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
+
+  <!-- Organization + FAQ schema (AEO-friendly) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Aireo Agency",
+    "url": "https://aireoagency.com",
+    "logo": "https://aireoagency.com/logo.png",
+    "sameAs": []
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "What is AEO?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Answer Engine Optimization helps your site be understood and recommended by AI tools like ChatGPT and Perplexity." }
+    },{
+      "@type": "Question",
+      "name": "How long does an audit take?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Usually a few minutes, depending on site size. We email a private report link when it’s ready." }
+    }]
+  }
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">AIREO</div>
+    <nav class="links">
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <h1>Agencies take weeks. <span class="gold">We take minutes.</span></h1>
+    <p class="sub">Run a free AI-ready audit. Aireo checks your site for <strong>SEO</strong> and <strong>AEO</strong> so you show up on Google and in AI tools like ChatGPT.</p>
+
+    <form id="audit-form" class="card" autocomplete="off">
+      <div class="mode">
+        <button type="button" data-mode="audit" class="pill active">Audit</button>
+        <button type="button" data-mode="mock" class="pill">Mock Optimizer</button>
+        <button type="button" data-mode="auto" class="pill disabled" title="Coming soon">Auto Site Editor</button>
+      </div>
+
+      <label>Website URL
+        <input id="url" name="url" type="url" placeholder="https://example.com" required>
+      </label>
+
+      <label>Email
+        <input id="email" name="email" type="email" placeholder="you@business.com" required>
+      </label>
+
+      <label class="check">
+        <input id="own" type="checkbox" required>
+        <span>I own/manage this site or have permission.</span>
+      </label>
+
+      <button id="submit" type="submit" class="cta">Run Free Audit</button>
+      <div id="note" class="note">We respect robots.txt and cap large sites to protect systems.</div>
+      <div id="alert" class="alert hidden"></div>
+    </form>
+  </main>
+
+  <section id="how" class="how">
+    <h2>How it works</h2>
+    <ol>
+      <li>Submit your site — we queue a private audit.</li>
+      <li>Aireo scans SEO & AEO signals and prepares fixes.</li>
+      <li>You get a secure report link by email.</li>
+    </ol>
+  </section>
+
+  <section id="faq" class="faq">
+    <h2>FAQ</h2>
+    <details>
+      <summary>Is the audit private?</summary>
+      <p>Yes. We email a private link to your report. Nothing is public.</p>
+    </details>
+    <details>
+      <summary>What is AEO?</summary>
+      <p>Answer Engine Optimization—so AI assistants understand and recommend your business.</p>
+    </details>
+  </section>
+
+  <footer class="foot">
+    <small>© <span id="year"></span> Aireo Agency • <a href="#">Privacy</a> • <a href="#">Terms</a></small>
+  </footer>
+</body>
+</html>
