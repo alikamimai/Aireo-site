@@ -1,1196 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aireo Agency — AI SEO & AEO audits in minutes</title>
-    <meta name="description" content="Run a free AI-ready audit. Aireo checks SEO & AEO so you show up on Google and in ChatGPT. Get fixes in minutes.">
-    <link rel="canonical" href="https://YOUR_DOMAIN/">
-    <link rel="icon" href="/assets/favicon.ico">
-    <meta property="og:title" content="Aireo Agency — AI SEO & AEO audits in minutes">
-    <meta property="og:description" content="Run a free AI-ready audit. Aireo checks SEO & AEO so you show up on Google and in ChatGPT. Get fixes in minutes.">
-    <meta property="og:image" content="https://YOUR_DOMAIN/assets/preview.jpg">
-    <meta property="og:url" content="https://YOUR_DOMAIN/">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Run a free AI-ready audit. Aireo checks SEO & AEO so you show up on Google and in ChatGPT. Get fixes in minutes." />
+    <link rel="canonical" href="https://YOUR_DOMAIN/" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <meta property="og:title" content="Aireo Agency — AI SEO & AEO audits in minutes" />
+    <meta property="og:description" content="Run a free AI-ready audit. Aireo checks SEO & AEO so you show up on Google and in ChatGPT. Get fixes in minutes." />
+    <meta property="og:image" content="https://YOUR_DOMAIN/assets/preview.jpg" />
+    <meta property="og:url" content="https://YOUR_DOMAIN/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What does Aireo Agency do?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Aireo automates SEO and AEO so your business appears in Google and AI tools like ChatGPT and Perplexity. We deliver audits in minutes and provide mock fixes; auto editing is coming soon."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What is AEO?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Answer Engine Optimization prepares your site to be understood and recommended by AI assistants. It complements traditional SEO."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How fast is the audit?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Usually a few minutes depending on your site size. We email a private link to your report."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Is my report private?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, your report is delivered via a private, unlisted link sent to your email. We do not make it public."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Do you respect robots.txt?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Absolutely. We strictly adhere to your robots.txt directives to ensure we only crawl permitted areas of your site."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can you auto-apply fixes?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The Auto Site Editor is coming soon. You can join the waitlist now to be the first to access this feature."
-                }
-            }
-        ]
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"What does Aireo Agency do?","acceptedAnswer":{"@type":"Answer","text":"Aireo automates SEO and AEO so your business appears in Google and AI tools like ChatGPT and Perplexity. We deliver audits in minutes and provide mock fixes; auto editing is coming soon."}},
+        {"@type":"Question","name":"What is AEO?","acceptedAnswer":{"@type":"Answer","text":"Answer Engine Optimization prepares your site to be understood and recommended by AI assistants. It complements traditional SEO."}},
+        {"@type":"Question","name":"How fast is the audit?","acceptedAnswer":{"@type":"Answer","text":"Usually a few minutes depending on your site size. We email a private link to your report."}},
+        {"@type":"Question","name":"Is my report private?","acceptedAnswer":{"@type":"Answer","text":"Yes, your report is delivered via a private, unlisted link sent to your email. We do not make it public."}},
+        {"@type":"Question","name":"Do you respect robots.txt?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. We strictly adhere to your robots.txt directives to ensure we only crawl permitted areas of your site."}},
+        {"@type":"Question","name":"Can you auto-apply fixes?","acceptedAnswer":{"@type":"Answer","text":"The Auto Site Editor is coming soon. You can join the waitlist now to be the first to access this feature."}}
+      ]
     }
     </script>
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Aireo Agency",
-        "url": "https://YOUR_DOMAIN",
-        "logo": "https://YOUR_DOMAIN/assets/logo.png",
-        "sameAs": []
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Aireo Agency",
+      "url": "https://YOUR_DOMAIN",
+      "logo": "https://YOUR_DOMAIN/assets/logo.png",
+      "sameAs": []
     }
     </script>
     <style>
-        :root {
-            --gold: #D4AF37;
-            --gold-soft: #E0C169;
-            --black: #0A0A0A;
-            --ink: #111827;
-            --slate: #9CA3AF;
-            --gradient-accent: linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Manrope', sans-serif;
-            background-color: var(--black);
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            color: var(--gold);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            background-color: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: var(--gold);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .cta-button {
-            background: var(--gradient-accent);
-            color: var(--black);
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .cta-button:focus {
-            outline: 2px solid var(--gold);
-            outline-offset: 2px;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 100px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1), transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        @media (min-width: 768px) {
-            .hero h1 {
-                font-size: 64px;
-            }
-        }
-
-        .hero-subhead {
-            font-size: 20px;
-            color: white;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            font-weight: 400;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 60px;
-        }
-
-        .secondary-cta {
-            background: transparent;
-            color: var(--gold);
-            border: 2px solid var(--gold);
-        }
-
-        .secondary-cta:hover {
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        /* Mode Selector */
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin: 60px 0 40px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: var(--gradient-accent);
-            margin: 15px auto 0;
-            border-radius: 3px;
-        }
-
-        .modes-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 80px;
-        }
-
-        .mode-card {
-            background: rgba(20, 20, 20, 0.7);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 16px;
-            padding: 30px;
-            width: 300px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .mode-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
-            border-color: rgba(212, 175, 55, 0.4);
-        }
-
-        .mode-card.selected {
-            background: var(--gradient-accent);
-            color: var(--black);
-        }
-
-        .mode-card.selected h3 {
-            color: var(--black);
-        }
-
-        .mode-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
-
-        .mode-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .mode-description {
-            font-size: 16px;
-            margin-bottom: 20px;
-            color: var(--slate);
-        }
-
-        .coming-soon {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--gold-soft);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            backdrop-filter: blur(5px);
-        }
-
-        .mode-card.disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .mode-card.disabled:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* How It Works */
-        .how-it-works {
-            background: rgba(20, 20, 20, 0.5);
-            padding: 80px 0;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .steps-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .step {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-            padding: 30px;
-        }
-
-        .step-number {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-accent);
-            color: var(--black);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .step h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .step p {
-            color: var(--slate);
-        }
-
-        /* Trust Section */
-        .trust-section {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .trust-features {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            margin: 50px 0;
-        }
-
-        .trust-feature {
-            flex: 1;
-            min-width: 200px;
-            max-width: 300px;
-        }
-
-        .trust-feature h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .trust-feature p {
-            color: var(--slate);
-        }
-
-        .testimonials {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin: 60px 0;
-        }
-
-        .testimonial-card {
-            background: rgba(20, 20, 20, 0.7);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 16px;
-            padding: 30px;
-            width: 300px;
-            text-align: left;
-        }
-
-        .testimonial-logo {
-            height: 40px;
-            margin-bottom: 20px;
-            opacity: 0.7;
-        }
-
-        .testimonial-quote {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: var(--slate);
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: white;
-        }
-
-        .testimonial-role {
-            color: var(--slate);
-            font-size: 14px;
-        }
-
-        /* Final CTA Banner */
-        .final-cta {
-            background: var(--black);
-            padding: 60px 0;
-            text-align: center;
-            border-top: 3px solid transparent;
-            border-image: var(--gradient-accent);
-            border-image-slice: 1;
-            margin: 80px 0;
-        }
-
-        .final-cta h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
-        }
-
-        .final-cta p {
-            font-size: 20px;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            color: var(--slate);
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(15, 15, 15, 0.9);
-            padding: 60px 0 30px;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--gold);
-            text-decoration: none;
-            margin-bottom: 20px;
-        }
-
-        .footer-links h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: var(--gold);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: var(--slate);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-            color: var(--slate);
-            font-size: 14px;
-        }
-
-        /* Form Styles */
-        .form-container {
-            background: rgba(20, 20, 20, 0.7);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 16px;
-            padding: 40px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: white;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 8px;
-            background: rgba(30, 30, 30, 0.8);
-            color: white;
-            font-family: 'Manrope', sans-serif;
-            font-size: 16px;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-
-        .checkbox-input {
-            margin-top: 4px;
-        }
-
-        .checkbox-label {
-            flex: 1;
-            color: var(--slate);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: var(--gradient-accent);
-            color: var(--black);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--black);
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .error-message {
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid rgba(255, 0, 0, 0.3);
-            color: #ff6b6b;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: none;
-        }
-
-        /* Waitlist Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal {
-            background: var(--black);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 16px;
-            padding: 40px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            transform: translateY(-20px);
-            transition: transform 0.3s ease;
-        }
-
-        .modal-overlay.active .modal {
-            transform: translateY(0);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--slate);
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .modal h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .modal p {
-            margin-bottom: 30px;
-            color: var(--slate);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container {
-                justify-content: space-between;
-            }
-
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--black);
-                flex-direction: column;
-                padding: 20px;
-                border-top: 1px solid rgba(212, 175, 55, 0.2);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero-subhead {
-                font-size: 18px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section-title {
-                font-size: 32px;
-            }
-
-            .modes-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .steps-container {
-                flex-direction: column;
-            }
-
-            .trust-features {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer-content {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 80px 0 60px;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-
-            .mode-card {
-                width: 100%;
-                max-width: 350px;
-            }
-
-            .testimonial-card {
-                width: 100%;
-                max-width: 350px;
-            }
-        }
+      :root { --gold:#D4AF37; --gold-soft:#E0C169; --black:#0A0A0A; --ink:#111827; --slate:#9CA3AF; --gradient-accent:linear-gradient(135deg,#E7C76A 0%,#D4AF37 35%,#B8902E 100%);} *{margin:0;padding:0;box-sizing:border-box}
+      body{font-family:'Manrope',sans-serif;background:var(--black);color:#fff;line-height:1.6;overflow-x:hidden}
+      h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--gold)}
+      .container{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}
+      header{padding:20px 0;position:sticky;top:0;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);z-index:1000;border-bottom:1px solid rgba(212,175,55,.2)}
+      .header-container{display:flex;justify-content:space-between;align-items:center}
+      .logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--gold);text-decoration:none}
+      .nav-menu{display:flex;gap:30px}
+      .nav-menu a{color:#fff;text-decoration:none;font-weight:500;font-size:16px;transition:.3s}
+      .nav-menu a:hover{color:var(--gold)}
+      .mobile-menu-btn{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer}
+      .cta-button{background:var(--gradient-accent);color:var(--black);padding:12px 24px;border-radius:12px;font-weight:600;text-decoration:none;transition:.3s;border:none;cursor:pointer;font-size:16px}
+      .cta-button:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(212,175,55,.3)}
+      .cta-button.secondary-cta{background:transparent;color:var(--gold);border:2px solid var(--gold)}
+      .cta-button.secondary-cta:hover{background:rgba(212,175,55,.1)}
+      .hero{padding:100px 0 80px;text-align:center;position:relative;overflow:hidden}
+      .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(212,175,55,.1),transparent 70%);pointer-events:none}
+      .hero h1{font-size:48px;margin-bottom:20px;line-height:1.2}
+      @media(min-width:768px){.hero h1{font-size:64px}}
+      .hero-subhead{font-size:20px;color:#fff;max-width:700px;margin:0 auto 40px}
+      .hero-buttons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:60px}
+      .section-title{text-align:center;font-size:36px;margin:60px 0 40px;position:relative}
+      .section-title::after{content:'';display:block;width:80px;height:3px;background:var(--gradient-accent);margin:15px auto 0;border-radius:3px}
+      .modes-container{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:80px}
+      .mode-card{background:rgba(20,20,20,.7);border:1px solid rgba(212,175,55,.2);border-radius:16px;padding:30px;width:300px;text-align:center;transition:.3s;cursor:pointer;position:relative}
+      .mode-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(212,175,55,.15);border-color:rgba(212,175,55,.4)}
+      .mode-card.selected{background:var(--gradient-accent);color:var(--black)} .mode-card.selected h3{color:var(--black)}
+      .mode-card.disabled{opacity:.6;cursor:not-allowed}
+      .how-it-works{background:rgba(20,20,20,.5);padding:80px 0;border-top:1px solid rgba(212,175,55,.1);border-bottom:1px solid rgba(212,175,55,.1)}
+      .steps-container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-top:50px}
+      .step{flex:1;min-width:250px;text-align:center;padding:30px}
+      .step-number{display:inline-grid;place-items:center;width:50px;height:50px;background:var(--gradient-accent);color:var(--black);border-radius:50%;font-size:24px;font-weight:700;margin-bottom:20px}
+      .form-container{background:rgba(20,20,20,.7);border:1px solid rgba(212,175,55,.2);border-radius:16px;padding:40px;max-width:800px;margin:0 auto}
+      .form-group{margin-bottom:25px}
+      .form-label{display:block;margin-bottom:8px;font-weight:500;color:#fff}
+      .form-input{width:100%;padding:15px;border:1px solid rgba(212,175,55,.3);border-radius:8px;background:rgba(30,30,30,.8);color:#fff;font-size:16px}
+      .form-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(212,175,55,.3)}
+      .checkbox-group{display:flex;align-items:flex-start;gap:10px;margin-bottom:25px}
+      .submit-btn{width:100%;padding:15px;background:var(--gradient-accent);color:var(--black);border:none;border-radius:8px;font-weight:600;font-size:16px;cursor:pointer;transition:.3s}
+      .submit-btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(212,175,55,.3)}
+      .spinner{display:inline-block;width:20px;height:20px;border:3px solid rgba(255,255,255,.3);border-radius:50%;border-top-color:#000;animation:spin 1s linear infinite;margin-left:10px}
+      @keyframes spin{to{transform:rotate(360deg)}}
+      .error-message{background:rgba(255,0,0,.1);border:1px solid rgba(255,0,0,.3);color:#ff6b6b;padding:15px;border-radius:8px;margin-bottom:20px;display:none}
+      pre#jsonOut{background:rgba(0,0,0,.5);border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:16px;max-height:360px;overflow:auto}
+      footer{background:rgba(15,15,15,.9);padding:60px 0 30px;border-top:1px solid rgba(212,175,55,.1)}
+      @media(max-width:768px){.nav-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--black);flex-direction:column;padding:20px;border-top:1px solid rgba(212,175,55,.2)}.nav-menu.active{display:flex}.mobile-menu-btn{display:block}.hero h1{font-size:36px}}
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="/" class="logo">Aireo</a>
-            <nav class="nav-menu" id="navMenu">
-                <a href="/services">Services</a>
-                <a href="/pricing">Pricing</a>
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-            </nav>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-            <a href="#" class="cta-button" id="stickyCta">Get Free Audit</a>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Agencies take weeks.<br>We take minutes.</h1>
-            <p class="hero-subhead">AI-powered SEO + AEO so you show up on Google and in tools like ChatGPT.</p>
-            <div class="hero-buttons">
-                <a href="#audit-form" class="cta-button">Get Your Free Audit</a>
-                <a href="#how-it-works" class="cta-button secondary-cta">See How It Works</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mode Selector -->
-    <section class="container">
-        <h2 class="section-title">Choose Your Mode</h2>
-        <div class="modes-container">
-            <div class="mode-card selected" data-mode="audit">
-                <div class="mode-icon">✓</div>
-                <h3>Audit</h3>
-                <p class="mode-description">Full crawl, instant scores, top issues.</p>
-            </div>
-            <div class="mode-card" data-mode="mock">
-                <div class="mode-icon">⚙️</div>
-                <h3>Mock Optimizer</h3>
-                <p class="mode-description">See improved titles, meta, schema & FAQs.</p>
-            </div>
-            <div class="mode-card disabled" data-mode="auto">
-                <div class="mode-icon">🚀</div>
-                <h3>Auto Site Editor</h3>
-                <p class="mode-description">AI applies approved fixes automatically.</p>
-                <div class="coming-soon">Coming Soon</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Submit your site</h3>
-                    <p>We queue your audit and start scanning immediately.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Get a private link</h3>
-                    <p>Receive scores and mock fixes via email within minutes.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Approve changes</h3>
-                    <p>(coming soon) Auto-apply fixes and stay optimized weekly.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Audit Form -->
-    <section class="container" style="padding: 80px 0;">
-        <h2 class="section-title">Start Your Free Audit</h2>
-        <div class="form-container" id="auditForm">
-            <div class="error-message" id="errorMessage"></div>
-            <form id="submitForm">
-                <div class="form-group">
-                    <label for="targetUrl" class="form-label">Website URL</label>
-                    <input type="url" id="targetUrl" name="target_url" class="form-input" placeholder="https://yourwebsite.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" id="email" name="email" class="form-input" placeholder="you@yourcompany.com" required>
-                </div>
-                <input type="hidden" id="mode" name="mode" value="audit">
-                <div class="checkbox-group">
-                    <input type="checkbox" id="permission" name="permission" class="checkbox-input" required>
-                    <label for="permission" class="checkbox-label">I own/manage this site or have permission to audit it.</label>
-                </div>
-                <div class="form-group" id="captchaContainer">
-                    <!-- hCaptcha will be inserted here via JavaScript -->
-                    <div class="h-captcha" id="hcaptchaWidget"></div>
-                </div>
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    <span id="btnText">Start Free Audit</span>
-                    <span class="spinner" id="spinner" style="display: none;"></span>
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Trust & Proof Section -->
-    <section class="trust-section">
-        <div class="container">
-            <h2 class="section-title">Why Aireo</h2>
-            <div class="trust-features">
-                <div class="trust-feature">
-                    <h3>Minutes, not weeks</h3>
-                    <p>Get actionable insights faster than any traditional agency.</p>
-                </div>
-                <div class="trust-feature">
-                    <h3>Human-readable reports</h3>
-                    <p>Clear, concise recommendations you can understand and implement.</p>
-                </div>
-                <div class="trust-feature">
-                    <h3>Respects robots.txt</h3>
-                    <p>We follow your site's rules and only crawl what you allow.</p>
-                </div>
-            </div>
-
-            <h3 class="section-title">Trusted By</h3>
-            <div class="testimonials">
-                <div class="testimonial-card">
-                    <div class="testimonial-logo">TechStart</div>
-                    <p class="testimonial-quote">"Aireo cut our SEO audit time from 3 weeks to 15 minutes. The insights were spot-on and easy to implement."</p>
-                    <div class="testimonial-author">Sarah Chen</div>
-                    <div class="testimonial-role">Marketing Director</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-logo">LocalEats</div>
-                    <p class="testimonial-quote">"Our visibility in Google and AI tools improved dramatically after implementing Aireo's recommendations. Worth every penny."</p>
-                    <div class="testimonial-author">Mike Rodriguez</div>
-                    <div class="testimonial-role">Owner</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-logo">EduHub</div>
-                    <p class="testimonial-quote">"The mock optimizer showed us exactly what to fix. Even our non-technical team could understand and make the changes."</p>
-                    <div class="testimonial-author">Dr. Emily Watson</div>
-                    <div class="testimonial-role">Content Manager</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA Banner -->
-    <section class="final-cta">
-        <div class="container">
-            <h2>Stop waiting on agencies.<br>Start optimizing with Aireo.</h2>
-            <p>Run a free AI-ready audit. Aireo checks SEO & AEO so you show up on Google and in ChatGPT. Clear fixes, private link to your email.</p>
-            <a href="#audit-form" class="cta-button">Run Free Audit</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="/" class="footer-logo">Aireo</a>
-                    <p style="color: var(--slate); max-width: 300px;">AI-powered SEO & AEO audits in minutes. Show up on Google and in AI tools like ChatGPT.</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/services">Services</a></li>
-                        <li><a href="/pricing">Pricing</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="/privacy">Privacy Policy</a></li>
-                        <li><a href="/terms">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>We use your email only to deliver your private report. We don’t sell or share data. © 2024 Aireo Agency. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Waitlist Modal -->
-    <div class="modal-overlay" id="waitlistModal">
-        <div class="modal">
-            <button class="close-modal" id="closeModal">×</button>
-            <h3>Auto Editor is Coming Soon</h3>
-            <p>Join our waitlist to be the first to access this powerful feature and get exclusive early-bird pricing.</p>
-            <div class="form-container">
-                <div class="error-message" id="waitlistError"></div>
-                <form id="waitlistForm">
-                    <div class="form-group">
-                        <label for="waitlistEmail" class="form-label">Email Address</label>
-                        <input type="email" id="waitlistEmail" name="email" class="form-input" placeholder="you@yourcompany.com" required>
-                    </div>
-                    <button type="submit" class="submit-btn" id="waitlistSubmitBtn">
-                        <span id="waitlistBtnText">Join Waitlist</span>
-                        <span class="spinner" id="waitlistSpinner" style="display: none;"></span>
-                    </button>
-                </form>
-            </div>
-        </div>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="/" class="logo">Aireo</a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      <a href="#audit" class="cta-button" id="stickyCta">Get Free Audit</a>
     </div>
+  </header>
 
-    <script>
-        // Mobile Menu Toggle
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            document.getElementById('navMenu').classList.toggle('active');
-        });
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Agencies take weeks.<br/>We take minutes.</h1>
+      <p class="hero-subhead">AI-powered SEO + AEO so you show up on Google and in tools like ChatGPT.</p>
+      <div class="hero-buttons">
+        <a href="#audit" class="cta-button">Get Your Free Audit</a>
+        <a href="#how" class="cta-button secondary-cta">See How It Works</a>
+      </div>
+    </div>
+  </section>
 
-        // Close modal when clicking the close button
-        document.getElementById('closeModal').addEventListener('click', function() {
-            document.getElementById('waitlistModal').classList.remove('active');
-        });
+  <!-- Modes -->
+  <section class="container" id="modes">
+    <h2 class="section-title">Choose Your Mode</h2>
+    <div class="modes-container">
+      <div class="mode-card selected" data-mode="audit"><h3>Audit</h3><p class="mode-description">Full crawl, instant scores, top issues.</p></div>
+      <div class="mode-card" data-mode="mock"><h3>Mock Optimizer</h3><p class="mode-description">See improved titles, meta, schema & FAQs.</p></div>
+      <div class="mode-card disabled" data-mode="auto"><h3>Auto Site Editor</h3><p class="mode-description">AI applies approved fixes automatically.</p><div class="coming-soon">Coming soon</div></div>
+    </div>
+  </section>
 
-        // Close modal when clicking outside
-        document.getElementById('waitlistModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.remove('active');
-            }
-        });
+  <!-- How it works -->
+  <section class="how-it-works" id="how">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <div class="steps-container">
+        <div class="step"><div class="step-number">1</div><h3>Submit your site</h3><p>We queue your audit and start scanning immediately.</p></div>
+        <div class="step"><div class="step-number">2</div><h3>Get a private link</h3><p>Receive scores and mock fixes via email within minutes.</p></div>
+        <div class="step"><div class="step-number">3</div><h3>Approve changes</h3><p>(coming soon) Auto-apply fixes and stay optimized weekly.</p></div>
+      </div>
+    </div>
+  </section>
 
-        // Mode Selector
-        const modeCards = document.querySelectorAll('.mode-card');
-        const modeInput = document.getElementById('mode');
-        
-        modeCards.forEach(card => {
-            card.addEventListener('click', function() {
-                if (this.classList.contains('disabled')) {
-                    document.getElementById('waitlistModal').classList.add('active');
-                    return;
-                }
-                
-                // Remove selected class from all cards
-                modeCards.forEach(c => c.classList.remove('selected'));
-                // Add selected class to clicked card
-                this.classList.add('selected');
-                // Update hidden input value
-                modeInput.value = this.getAttribute('data-mode');
-            });
-        });
+  <!-- Audit form + Live JSON output -->
+  <section class="container" id="audit" style="padding:80px 0;">
+    <h2 class="section-title">Start Your Free Audit</h2>
+    <div class="form-container">
+      <div class="error-message" id="errorMessage"></div>
+      <form id="submitForm">
+        <div class="form-group">
+          <label class="form-label" for="targetUrl">Website URL</label>
+          <input class="form-input" type="url" id="targetUrl" name="target_url" placeholder="https://yourwebsite.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="you@yourcompany.com" required />
+        </div>
+        <input type="hidden" id="mode" name="mode" value="audit" />
+        <div class="checkbox-group"><input id="permission" type="checkbox" required /><label for="permission">I own/manage this site or have permission to audit it.</label></div>
+        <button class="submit-btn" id="submitBtn" type="submit">Start Free Audit <span class="spinner" id="spinner" style="display:none"></span></button>
+      </form>
+      <p style="margin:18px 0 6px;color:#9CA3AF">AI Orchestrator Response:</p>
+      <pre id="jsonOut">{ "hint": "Your JSON result will show here." }</pre>
+      <p style="margin-top:8px;color:#9CA3AF;font-size:12px">Tip: In n8n, add headers on <em>Respond to Webhook</em>: <code>Access-Control-Allow-Origin: *</code>, <code>Access-Control-Allow-Headers: *</code>.</p>
+    </div>
+  </section>
 
-        // Form Submission
-        const form = document.getElementById('submitForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        const spinner = document.getElementById('spinner');
-        const errorMessage = document.getElementById('errorMessage');
-        
-        // Simulate environment variables
-        const PUBLIC_AIREO_JOB_ENDPOINT = 'https://api.yourdomain.com/submit'; // Replace with your actual endpoint
-        const PUBLIC_AIREO_CLIENT_KEY = 'your-client-key-here'; // Replace with your actual client key
-        const PUBLIC_HCAPTCHA_SITEKEY = 'your-hcaptcha-sitekey-here'; // Replace with your actual hCaptcha site key
-        
-        // Load hCaptcha
-        if (PUBLIC_HCAPTCHA_SITEKEY) {
-            const hcaptchaScript = document.createElement('script');
-            hcaptchaScript.src = 'https://hcaptcha.com/1/api.js';
-            hcaptchaScript.async = true;
-            hcaptchaScript.defer = true;
-            document.head.appendChild(hcaptchaScript);
-            
-            // Initialize hCaptcha after script loads
-            hcaptchaScript.onload = function() {
-                if (typeof hcaptcha !== 'undefined') {
-                    hcaptcha.render('hcaptchaWidget', {
-                        sitekey: PUBLIC_HCAPTCHA_SITEKEY
-                    });
-                }
-            };
-        }
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">We use your email only to deliver your private report. © <span id="y"></span> Aireo Agency. All rights reserved.</div>
+    </div>
+  </footer>
 
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Validate form
-            if (!form.checkValidity()) {
-                showError('Please fill out all required fields.');
-                return;
-            }
-            
-            // Check hCaptcha if available
-            if (PUBLIC_HCAPTCHA_SITEKEY && typeof hcaptcha !== 'undefined') {
-                const captchaResponse = hcaptcha.getResponse();
-                if (!captchaResponse) {
-                    showError('Please complete the hCaptcha verification.');
-                    return;
-                }
-            }
-            
-            // Disable button and show spinner
-            submitBtn.disabled = true;
-            btnText.style.display = 'none';
-            spinner.style.display = 'inline-block';
-            errorMessage.style.display = 'none';
-            
-            // Get form data
-            const formData = new FormData(form);
-            const data = {
-                target_url: formData.get('target_url'),
-                email: formData.get('email'),
-                mode: formData.get('mode')
-            };
-            
-            try {
-                const response = await fetch(PUBLIC_AIREO_JOB_ENDPOINT, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Aireo-Key': PUBLIC_AIREO_CLIENT_KEY
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                const result = await response.json();
-                
-                if (response.ok && result.job_id) {
-                    // Redirect to thanks page
-                    window.location.href = `/thanks?job=${result.job_id}`;
-                } else {
-                    // Handle error
-                    let errorMsg = 'Something went wrong. Please try again.';
-                    if (result.error) {
-                        errorMsg = result.error;
-                    } else if (response.status === 429) {
-                        errorMsg = 'Rate limit exceeded. Please try again later.';
-                    }
-                    showError(errorMsg);
-                }
-            } catch (error) {
-                showError('Network error. Please check your connection and try again.');
-                console.error('Error:', error);
-            } finally {
-                // Re-enable button and hide spinner
-                submitBtn.disabled = false;
-                btnText.style.display = 'inline';
-                spinner.style.display = 'none';
-            }
-        });
-        
-        // Waitlist Form Submission
-        const waitlistForm = document.getElementById('waitlistForm');
-        const waitlistSubmitBtn = document.getElementById('waitlistSubmitBtn');
-        const waitlistBtnText = document.getElementById('waitlistBtnText');
-        const waitlistSpinner = document.getElementById('waitlistSpinner');
-        const waitlistError = document.getElementById('waitlistError');
-        
-        waitlistForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            if (!waitlistForm.checkValidity()) {
-                showWaitlistError('Please enter a valid email address.');
-                return;
-            }
-            
-            waitlistSubmitBtn.disabled = true;
-            waitlistBtnText.style.display = 'none';
-            waitlistSpinner.style.display = 'inline-block';
-            waitlistError.style.display = 'none';
-            
-            const email = document.getElementById('waitlistEmail').value;
-            
-            try {
-                // In a real implementation, you would send this to your waitlist API
-                // For now, we'll simulate a successful submission
-                await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
-                
-                // Show success message (you might want to replace the form with a success message)
-                alert('Thank you for joining our waitlist! We\'ll notify you when Auto Editor is available.');
-                
-                // Close modal
-                document.getElementById('waitlistModal').classList.remove('active');
-                waitlistForm.reset();
-            } catch (error) {
-                showWaitlistError('Something went wrong. Please try again.');
-                console.error('Error:', error);
-            } finally {
-                waitlistSubmitBtn.disabled = false;
-                waitlistBtnText.style.display = 'inline';
-                waitlistSpinner.style.display = 'none';
-            }
-        });
-        
-        // Helper functions
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorMessage.style.display = 'block';
-        }
-        
-        function showWaitlistError(message) {
-            waitlistError.textContent = message;
-            waitlistError.style.display = 'block';
-        }
+  <!-- Scripts -->
+  <script>
+    // --- Config ---
+    const AIREO_WEBHOOK_DEFAULT = 'https://aireo.app.n8n.cloud/webhook/aireo-orchestrator'; // n8n production webhook
+    const STORAGE_KEY = 'aireo_webhook_url';
+    const AIREO_WEBHOOK = localStorage.getItem(STORAGE_KEY) || AIREO_WEBHOOK_DEFAULT;
 
-        // Sticky CTA scrolls to form
-        document.getElementById('stickyCta').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('auditForm').scrollIntoView({ behavior: 'smooth' });
+    // Mobile menu
+    document.getElementById('mobileMenuBtn').addEventListener('click',()=>document.getElementById('navMenu').classList.toggle('active'));
+    document.getElementById('stickyCta').addEventListener('click',e=>{e.preventDefault();document.getElementById('audit').scrollIntoView({behavior:'smooth'});});
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Mode selector
+    const modeCards = document.querySelectorAll('.mode-card');
+    const modeInput = document.getElementById('mode');
+    modeCards.forEach(card=>card.addEventListener('click',function(){
+      if(this.classList.contains('disabled')) return;
+      modeCards.forEach(c=>c.classList.remove('selected')); this.classList.add('selected');
+      modeInput.value = this.getAttribute('data-mode');
+    }));
+
+    // Helpers
+    const out = document.getElementById('jsonOut');
+    const showJSON = (obj)=>{ out.textContent = typeof obj==='string'? obj : JSON.stringify(obj,null,2); };
+    const showErr = (msg)=>{ const el=document.getElementById('errorMessage'); el.textContent=msg; el.style.display='block'; };
+
+    // Build AI instruction from form
+    function buildInstruction({url,email,mode}){
+      if(mode==='audit') return `Audit ${url} for SEO, AEO, Core Web Vitals, and Schema. Email a private link to ${email}.`;
+      if(mode==='mock') return `Generate mock fixes for ${url}: titles, meta, H1/H2, schema, FAQs. Email summary to ${email}.`;
+      return `Act as customer agent for ${url}. If lead-quality is high, email ${email}.`;
+    }
+
+    // Submit handler → calls n8n orchestrator directly
+    const form = document.getElementById('submitForm');
+    const btn = document.getElementById('submitBtn');
+    const spinner = document.getElementById('spinner');
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      document.getElementById('errorMessage').style.display='none';
+      const url = document.getElementById('targetUrl').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mode = document.getElementById('mode').value.trim();
+      if(!url || !email){ showErr('Please fill out all required fields.'); return; }
+
+      const text = buildInstruction({url, email, mode});
+      const context = `mode:${mode}; url:${url}; email:${email}; source:website_form;`;
+
+      btn.disabled = true; spinner.style.display = 'inline-block';
+      try{
+        const res = await fetch(AIREO_WEBHOOK, {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ text, context })
         });
-    </script>
+        const data = await res.json();
+        showJSON(data);
+        if(!res.ok) showErr('The server returned an error. Check your n8n workflow.');
+      }catch(err){
+        showErr('Network/CORS error. Ensure your n8n Respond node sets Access-Control-Allow-Origin: *.');
+      }finally{
+        btn.disabled = false; spinner.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
