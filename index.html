@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+```jsx
+import React, { useState, useEffect } from 'react';
 import { 
   Search, 
+  FileText, 
   Zap, 
   Bot, 
-  FileText, 
-  MessageSquare, 
-  Phone, 
-  Palette, 
   BarChart3,
+  MessageSquare,
+  Phone,
+  Palette,
   Rocket,
   Mail,
+  CheckCircle,
+  Clock,
+  Shield,
   ExternalLink
 } from 'lucide-react';
 
-const ServicesPage = () => {
-  const [selectedService, setSelectedService] = useState(null);
+const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedMode, setSelectedMode] = useState('audit');
 
   const services = [
     {
@@ -24,7 +29,8 @@ const ServicesPage = () => {
       icon: Search,
       cta: 'Run Free Audit',
       color: 'from-yellow-400 to-yellow-600',
-      href: '#audit-form'
+      gradient: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)',
+      enabled: true
     },
     {
       id: 'mock',
@@ -33,7 +39,8 @@ const ServicesPage = () => {
       icon: FileText,
       cta: 'See AI in Action',
       color: 'from-yellow-400 to-yellow-600',
-      href: '#mock-demo'
+      gradient: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)',
+      enabled: true
     },
     {
       id: 'auto',
@@ -42,8 +49,9 @@ const ServicesPage = () => {
       icon: Zap,
       cta: 'Join Waitlist',
       color: 'from-gray-400 to-gray-600',
-      comingSoon: true,
-      href: '#waitlist'
+      gradient: 'linear-gradient(135deg, #9CA3AF 0%, #6B7280 35%, #4B5563 100%)',
+      enabled: false,
+      comingSoon: true
     },
     {
       id: 'content',
@@ -52,7 +60,8 @@ const ServicesPage = () => {
       icon: Bot,
       cta: 'Generate Content',
       color: 'from-yellow-400 to-yellow-600',
-      href: '#content-engine'
+      gradient: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)',
+      enabled: true
     },
     {
       id: 'ads',
@@ -61,7 +70,8 @@ const ServicesPage = () => {
       icon: BarChart3,
       cta: 'Create Ad Campaign',
       color: 'from-yellow-400 to-yellow-600',
-      href: '#ads-engine'
+      gradient: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)',
+      enabled: true
     },
     {
       id: 'agent',
@@ -70,38 +80,48 @@ const ServicesPage = () => {
       icon: MessageSquare,
       cta: 'Deploy AI Agent',
       color: 'from-yellow-400 to-yellow-600',
-      href: '#ai-agent'
+      gradient: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)',
+      enabled: true
     }
+  ];
+
+  const trustFeatures = [
+    { icon: Clock, title: 'Minutes, not weeks', description: 'Get actionable insights faster than any traditional agency' },
+    { icon: CheckCircle, title: 'Human-readable reports', description: 'Clear, concise recommendations you can understand and implement' },
+    { icon: Shield, title: 'Respects robots.txt', description: 'We follow your site\'s rules and only crawl what you allow' }
   ];
 
   const ServiceCard = ({ service }) => {
     const Icon = service.icon;
     return (
       <div 
-        className="bg-black border border-yellow-500/20 rounded-2xl p-8 hover:border-yellow-500/40 hover:shadow-lg hover:shadow-yellow-500/10 transition-all duration-300 group cursor-pointer"
-        onClick={() => !service.comingSoon && setSelectedService(service)}
+        className={`bg-black border border-yellow-500/20 rounded-2xl p-8 hover:border-yellow-500/40 hover:shadow-lg hover:shadow-yellow-500/10 transition-all duration-300 group ${
+          service.comingSoon ? 'opacity-80' : 'cursor-pointer'
+        }`}
+        onClick={() => service.enabled && setSelectedMode(service.id)}
       >
-        <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+        <div 
+          className="w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+          style={{
+            background: service.gradient
+          }}
+        >
           <Icon className="w-8 h-8 text-black" />
         </div>
         <h3 className="text-2xl font-bold text-yellow-400 mb-4">{service.title}</h3>
         <p className="text-gray-300 mb-6 leading-relaxed">{service.description}</p>
         <div className="flex items-center justify-between">
-          <a 
-            href={service.href} 
-            className={`px-6 py-3 bg-gradient-to-r ${service.color} text-black font-semibold rounded-xl hover:shadow-lg hover:shadow-yellow-500/20 transition-all duration-300 flex items-center gap-2 ${
-              service.comingSoon ? 'opacity-60 cursor-not-allowed' : ''
+          <button 
+            className={`px-6 py-3 font-semibold rounded-xl hover:shadow-lg transition-all duration-300 flex items-center gap-2 ${
+              service.enabled 
+                ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-black hover:shadow-yellow-500/20' 
+                : 'bg-gray-800 text-gray-400 cursor-not-allowed'
             }`}
-            onClick={(e) => {
-              if (service.comingSoon) {
-                e.preventDefault();
-                // Handle waitlist modal here if needed
-              }
-            }}
+            disabled={!service.enabled}
           >
             {service.cta}
-            {!service.comingSoon && <ExternalLink className="w-4 h-4" />}
-          </a>
+            {service.enabled && <ExternalLink className="w-4 h-4" />}
+          </button>
           {service.comingSoon && (
             <span className="px-3 py-1 bg-gray-800 text-gray-400 text-sm font-medium rounded-full border border-gray-700">
               Coming Soon
@@ -113,21 +133,77 @@ const ServicesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Hero Section */}
-      <section className="relative py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-6">
-              AI-Powered Services
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              All of Aireo's services are fully AI-run end-to-end, delivering private, human-readable reports 
-              in minutes — not weeks like traditional agencies.
-            </p>
+    <div className="min-h-screen bg-black text-white font-sans">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-yellow-500/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            <a href="/" className="text-2xl font-bold text-yellow-400 font-serif">
+              Aireo
+            </a>
+            
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              <a href="/services" className="text-gray-300 hover:text-yellow-400 transition-colors">Services</a>
+              <a href="/pricing" className="text-gray-300 hover:text-yellow-400 transition-colors">Pricing</a>
+              <a href="/about" className="text-gray-300 hover:text-yellow-400 transition-colors">About</a>
+              <a href="/contact" className="text-gray-300 hover:text-yellow-400 transition-colors">Contact</a>
+              <a 
+                href="#audit-form" 
+                className="px-6 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-semibold rounded-lg hover:shadow-lg hover:shadow-yellow-500/20 transition-all"
+              >
+                Get Free Audit
+              </a>
+            </nav>
+
+            {/* Mobile menu button */}
+            <button 
+              className="md:hidden text-gray-300"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
           </div>
+
+          {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <div className="md:hidden py-4 border-t border-yellow-500/10">
+              <div className="flex flex-col space-y-4">
+                <a href="/services" className="text-gray-300 hover:text-yellow-400 transition-colors">Services</a>
+                <a href="/pricing" className="text-gray-300 hover:text-yellow-400 transition-colors">Pricing</a>
+                <a href="/about" className="text-gray-300 hover:text-yellow-400 transition-colors">About</a>
+                <a href="/contact" className="text-gray-300 hover:text-yellow-400 transition-colors">Contact</a>
+                <a 
+                  href="#audit-form" 
+                  className="px-6 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-semibold rounded-lg text-center"
+                >
+                  Get Free Audit
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent"></div>
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
+              Agencies take weeks.
+            </span>
+            <br />
+            <span className="text-white">We take minutes.</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12">
+            All of Aireo's services are fully AI-run end-to-end, delivering private, human-readable reports 
+            in minutes — not weeks like traditional agencies.
+          </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a 
               href="#audit-form" 
               className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-yellow-500/30 transition-all duration-300 transform hover:-translate-y-1"
@@ -144,9 +220,18 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services Section */}
       <section id="services" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-6">
+              AI-Powered Services
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Experience the full spectrum of AI-driven digital optimization, from audits to content creation and beyond.
+            </p>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
               <ServiceCard key={service.id} service={service} />
@@ -158,7 +243,12 @@ const ServicesPage = () => {
       {/* Custom Web Development Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-black via-gray-900/50 to-black">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-8">
+          <div 
+            className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-8"
+            style={{
+              background: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)'
+            }}
+          >
             <Palette className="w-8 h-8 text-black" />
           </div>
           <h2 className="text-4xl font-bold text-yellow-400 mb-6">
@@ -182,26 +272,94 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* CTA Banner */}
-      <section className="py-16 px-4 bg-black border-t border-yellow-500/10">
+      {/* Trust & Proof Section */}
+      <section className="py-20 px-4 bg-black/50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-6">
+              Why Aireo
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {trustFeatures.map((feature, index) => (
+              <div key={index} className="text-center p-8 bg-black/30 border border-yellow-500/10 rounded-2xl">
+                <div 
+                  className="w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6"
+                  style={{
+                    background: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)'
+                  }}
+                >
+                  <feature.icon className="w-8 h-8 text-black" />
+                </div>
+                <h3 className="text-2xl font-bold text-yellow-400 mb-4">{feature.title}</h3>
+                <p className="text-gray-300">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 px-4 bg-black border-t border-yellow-500/10">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-3xl font-bold text-yellow-400 mb-4">
-            Ready to Transform Your Digital Presence?
+          <h3 className="text-3xl md:text-4xl font-bold text-yellow-400 mb-6">
+            Stop waiting on agencies. Start optimizing with Aireo.
           </h3>
-          <p className="text-gray-400 mb-8">
-            Experience the speed and precision of AI-powered optimization. Get started with a free audit today.
+          <p className="text-xl text-gray-400 mb-8">
+            Run a free AI-ready audit. Aireo checks SEO & AEO so you show up on Google and in ChatGPT. Clear fixes, private link to your email.
           </p>
           <a 
             href="#audit-form" 
             className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-yellow-500/30 transition-all duration-300 inline-flex items-center gap-2"
           >
-            Start Your Free Audit
+            Run Free Audit
             <Rocket className="w-5 h-5" />
           </a>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-black/90 border-t border-yellow-500/10 py-12 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h4 className="text-yellow-400 font-bold text-lg mb-4">Aireo</h4>
+              <p className="text-gray-400">AI-powered SEO & AEO audits in minutes. Show up on Google and in AI tools like ChatGPT.</p>
+            </div>
+            <div>
+              <h4 className="text-yellow-400 font-bold text-lg mb-4">Services</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-yellow-400 transition-colors">AI SEO + AEO Audit</a></li>
+                <li><a href="#" className="hover:text-yellow-400 transition-colors">Mock Optimizer</a></li>
+                <li><a href="#" className="hover:text-yellow-400 transition-colors">AI Content Engine</a></li>
+                <li><a href="#" className="hover:text-yellow-400 transition-colors">AI Ads Engine</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-yellow-400 font-bold text-lg mb-4">Company</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="/about" className="hover:text-yellow-400 transition-colors">About</a></li>
+                <li><a href="/pricing" className="hover:text-yellow-400 transition-colors">Pricing</a></li>
+                <li><a href="/contact" className="hover:text-yellow-400 transition-colors">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-yellow-400 font-bold text-lg mb-4">Legal</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="/privacy" className="hover:text-yellow-400 transition-colors">Privacy Policy</a></li>
+                <li><a href="/terms" className="hover:text-yellow-400 transition-colors">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-yellow-500/10 pt-8 text-center text-gray-500 text-sm">
+            <p>We use your email only to deliver your private report. We don’t sell or share data. © 2024 Aireo Agency. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
 
-export default ServicesPage;
+export default App;
+```
