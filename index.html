@@ -811,7 +811,7 @@
     </div>
   </footer>
 
-  <!-- Form Submission Script -->
+  <!-- Updated Form Submission Script (CORS-safe) -->
   <script>
     const PUBLIC_AIREO_JOB_ENDPOINT = "https://aireo.app.n8n.cloud/webhook/aireo-orchestrator";
 
@@ -821,7 +821,7 @@
     const spinner = document.getElementById("spinner");
     const errorMessage = document.getElementById("errorMessage");
 
-    form.addEventListener("submit", async function(e) {
+    form.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       if (!form.checkValidity()) {
@@ -834,31 +834,33 @@
       spinner.style.display = "inline-block";
       errorMessage.style.display = "none";
 
-      const formData = new FormData(form);
-      const data = {
-        target_url: formData.get("target_url").trim(),
-        email: formData.get("email").trim(),
-        mode: formData.get("mode"),
-      };
+      // Build application/x-www-form-urlencoded body
+      const fd = new FormData(form);
+      const body = new URLSearchParams({
+        target_url: (fd.get("target_url") || "").toString().trim(),
+        email: (fd.get("email") || "").toString().trim(),
+        mode: (fd.get("mode") || "audit").toString()
+      });
 
       try {
-        const response = await fetch(PUBLIC_AIREO_JOB_ENDPOINT, {
+        const res = await fetch(PUBLIC_AIREO_JOB_ENDPOINT, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
+          body // No headers → avoids CORS preflight
         });
 
-        const result = await response.json();
+        const text = await res.text();
+        let data; try { data = JSON.parse(text); } catch { data = text; }
 
-        if (response.ok) {
-          alert("✅ Audit submitted successfully! Check your email soon.");
-          form.reset();
-        } else {
-          showError(result.error || "Something went wrong.");
+        if (!res.ok) {
+          showError(`HTTP ${res.status} – ${typeof data === 'string' ? data : (data.error || JSON.stringify(data))}`);
+          return;
         }
-      } catch (error) {
+
+        alert("✅ Audit submitted successfully! Check your email soon.");
+        form.reset();
+      } catch (err) {
         showError("Network error. Please try again.");
-        console.error(error);
+        console.error(err);
       } finally {
         submitBtn.disabled = false;
         btnText.style.display = "inline";
@@ -866,8 +868,8 @@
       }
     });
 
-    function showError(message) {
-      errorMessage.textContent = message;
+    function showError(msg) {
+      errorMessage.textContent = msg;
       errorMessage.style.display = "block";
     }
   </script>
