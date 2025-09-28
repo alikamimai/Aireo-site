@@ -1,365 +1,652 @@
-```jsx
-import React, { useState, useEffect } from 'react';
-import { 
-  Search, 
-  FileText, 
-  Zap, 
-  Bot, 
-  BarChart3,
-  MessageSquare,
-  Phone,
-  Palette,
-  Rocket,
-  Mail,
-  CheckCircle,
-  Clock,
-  Shield,
-  ExternalLink
-} from 'lucide-react';
-
-const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedMode, setSelectedMode] = useState('audit');
-
-  const services = [
-    {
-      id: 'audit',
-      title: 'AI SEO + AEO Audit',
-      description: 'Automated crawl that checks SEO (Google visibility) and AEO (Answer Engine Optimization for AI tools like ChatGPT and Perplexity). Returns a branded PDF report with scores and top fixes.',
-      icon: Search,
-      cta: 'Run Free Audit',
-      color: 'from-yellow-400 to-yellow-600',
-      gradient: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)',
-      enabled: true
-    },
-    {
-      id: 'mock',
-      title: 'Mock Optimizer',
-      description: 'Generates suggested improvements for titles, meta descriptions, H1/H2 structure, schema markup, and FAQs. Shows how content would look after optimization.',
-      icon: FileText,
-      cta: 'See AI in Action',
-      color: 'from-yellow-400 to-yellow-600',
-      gradient: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)',
-      enabled: true
-    },
-    {
-      id: 'auto',
-      title: 'Auto Site Editor',
-      description: 'AI applies approved fixes automatically to the website, keeping it optimized continuously.',
-      icon: Zap,
-      cta: 'Join Waitlist',
-      color: 'from-gray-400 to-gray-600',
-      gradient: 'linear-gradient(135deg, #9CA3AF 0%, #6B7280 35%, #4B5563 100%)',
-      enabled: false,
-      comingSoon: true
-    },
-    {
-      id: 'content',
-      title: 'AI Content Engine',
-      description: 'Creates optimized blog posts, landing pages, titles, and structured data (schema) tailored for both Google and AI search engines.',
-      icon: Bot,
-      cta: 'Generate Content',
-      color: 'from-yellow-400 to-yellow-600',
-      gradient: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)',
-      enabled: true
-    },
-    {
-      id: 'ads',
-      title: 'AI Ads Engine',
-      description: 'Generates complete ad sets for Meta, TikTok, and Google Ads, including primary text, headlines, creative hooks, CTAs, and suggested targeting.',
-      icon: BarChart3,
-      cta: 'Create Ad Campaign',
-      color: 'from-yellow-400 to-yellow-600',
-      gradient: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)',
-      enabled: true
-    },
-    {
-      id: 'agent',
-      title: 'AI Agent (Chat + Call)',
-      description: 'Virtual agents that answer FAQs, qualify leads, capture contact info, and schedule follow-ups through chat widgets or phone calls.',
-      icon: MessageSquare,
-      cta: 'Deploy AI Agent',
-      color: 'from-yellow-400 to-yellow-600',
-      gradient: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)',
-      enabled: true
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aireo Agency — AI-Powered Digital Services</title>
+  <meta name="description" content="Fully AI-run SEO, AEO, content, ads, and more — delivered in minutes, not weeks.">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --gold-soft: #E0C169;
+      --black: #0A0A0A;
+      --ink: #111827;
+      --slate: #9CA3AF;
+      --gradient-accent: linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%);
     }
-  ];
 
-  const trustFeatures = [
-    { icon: Clock, title: 'Minutes, not weeks', description: 'Get actionable insights faster than any traditional agency' },
-    { icon: CheckCircle, title: 'Human-readable reports', description: 'Clear, concise recommendations you can understand and implement' },
-    { icon: Shield, title: 'Respects robots.txt', description: 'We follow your site\'s rules and only crawl what you allow' }
-  ];
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  const ServiceCard = ({ service }) => {
-    const Icon = service.icon;
-    return (
-      <div 
-        className={`bg-black border border-yellow-500/20 rounded-2xl p-8 hover:border-yellow-500/40 hover:shadow-lg hover:shadow-yellow-500/10 transition-all duration-300 group ${
-          service.comingSoon ? 'opacity-80' : 'cursor-pointer'
-        }`}
-        onClick={() => service.enabled && setSelectedMode(service.id)}
-      >
-        <div 
-          className="w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
-          style={{
-            background: service.gradient
-          }}
-        >
-          <Icon className="w-8 h-8 text-black" />
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--black);
+      color: white;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .cta-button {
+      background: var(--gradient-accent);
+      color: var(--black);
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.05), transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #ddd;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .secondary-cta {
+      background: transparent;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+
+    /* Services */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.75rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      color: #aaa;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .service-card {
+      background: rgba(20, 20, 20, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      border-color: rgba(212, 175, 55, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      background: var(--gradient-accent);
+    }
+
+    .service-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--black);
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .service-card p {
+      color: #bbb;
+      margin-bottom: 24px;
+      font-size: 1rem;
+    }
+
+    .coming-soon-badge {
+      display: inline-block;
+      background: rgba(100, 100, 100, 0.2);
+      color: #888;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-left: 12px;
+    }
+
+    /* Custom Dev Section */
+    .custom-dev {
+      background: linear-gradient(to right, #0a0a0a, #151515, #0a0a0a);
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .custom-dev-content {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .custom-dev-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      background: var(--gradient-accent);
+    }
+
+    .custom-dev-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--black);
+    }
+
+    .custom-dev h2 {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .custom-note {
+      background: rgba(30, 30, 30, 0.8);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 2rem 0;
+    }
+
+    .custom-note p {
+      font-size: 1.1rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* Trust Section */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-top: 3rem;
+    }
+
+    .trust-card {
+      text-align: center;
+      padding: 32px;
+      background: rgba(20, 20, 20, 0.5);
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .trust-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      background: var(--gradient-accent);
+    }
+
+    .trust-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--black);
+    }
+
+    .trust-card h3 {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .trust-card p {
+      color: #bbb;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      text-align: center;
+      padding: 80px 0;
+      background: rgba(10, 10, 10, 0.7);
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .final-cta h2 {
+      font-size: 2.25rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .final-cta p {
+      color: #bbb;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(8, 8, 8, 0.95);
+      padding: 60px 0 30px;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h3 {
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-size: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul li a {
+      color: #999;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="/" class="logo">Aireo</a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#audit-form" class="cta-button">Get Free Audit</a>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1><span>Agencies take weeks.</span><br>We take minutes.</h1>
+      <p>All of Aireo's services are fully AI-run end-to-end, delivering private, human-readable reports in minutes — not weeks like traditional agencies.</p>
+      <div class="hero-ctas">
+        <a href="#audit-form" class="cta-button">Run Free Audit</a>
+        <a href="#services" class="cta-button secondary-cta">See AI in Action</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>AI-Powered Services</h2>
+        <p>Experience the full spectrum of AI-driven digital optimization, from audits to content creation and beyond.</p>
+      </div>
+      <div class="services-grid">
+        <!-- Audit -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </div>
+          <h3>AI SEO + AEO Audit</h3>
+          <p>Automated crawl that checks SEO (Google visibility) and AEO (Answer Engine Optimization for AI tools like ChatGPT and Perplexity). Returns a branded PDF report with scores and top fixes.</p>
+          <a href="#audit-form" class="cta-button">Run Free Audit</a>
         </div>
-        <h3 className="text-2xl font-bold text-yellow-400 mb-4">{service.title}</h3>
-        <p className="text-gray-300 mb-6 leading-relaxed">{service.description}</p>
-        <div className="flex items-center justify-between">
-          <button 
-            className={`px-6 py-3 font-semibold rounded-xl hover:shadow-lg transition-all duration-300 flex items-center gap-2 ${
-              service.enabled 
-                ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-black hover:shadow-yellow-500/20' 
-                : 'bg-gray-800 text-gray-400 cursor-not-allowed'
-            }`}
-            disabled={!service.enabled}
-          >
-            {service.cta}
-            {service.enabled && <ExternalLink className="w-4 h-4" />}
-          </button>
-          {service.comingSoon && (
-            <span className="px-3 py-1 bg-gray-800 text-gray-400 text-sm font-medium rounded-full border border-gray-700">
-              Coming Soon
-            </span>
-          )}
+
+        <!-- Mock Optimizer -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+          </div>
+          <h3>Mock Optimizer</h3>
+          <p>Generates suggested improvements for titles, meta descriptions, H1/H2 structure, schema markup, and FAQs. Shows how content would look after optimization.</p>
+          <a href="#" class="cta-button">See AI in Action</a>
+        </div>
+
+        <!-- Auto Site Editor -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 20h4l10.5-10.5a2.828 2.828 0 1 0-4-4L4 16v4z"></path>
+              <path d="M13.5 6.5l4 4"></path>
+            </svg>
+          </div>
+          <h3>Auto Site Editor <span class="coming-soon-badge">Coming Soon</span></h3>
+          <p>AI applies approved fixes automatically to the website, keeping it optimized continuously.</p>
+          <a href="#" class="cta-button" style="background: #444; color: #999; cursor: not-allowed;">Join Waitlist</a>
+        </div>
+
+        <!-- AI Content Engine -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path>
+              <path d="M8 16s2-1 4-1 4 1 4 1"></path>
+              <path d="M8 12s2-1 4-1 4 1 4 1"></path>
+              <path d="M8 8s2-1 4-1 4 1 4 1"></path>
+            </svg>
+          </div>
+          <h3>AI Content Engine</h3>
+          <p>Creates optimized blog posts, landing pages, titles, and structured data (schema) tailored for both Google and AI search engines.</p>
+          <a href="#" class="cta-button">Generate Content</a>
+        </div>
+
+        <!-- AI Ads Engine -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 3v18h18"></path>
+              <path d="M18 15h-6v-6h6v6z"></path>
+              <path d="M18 9h2v6h-2"></path>
+            </svg>
+          </div>
+          <h3>AI Ads Engine</h3>
+          <p>Generates complete ad sets for Meta, TikTok, and Google Ads, including primary text, headlines, creative hooks, CTAs, and suggested targeting.</p>
+          <a href="#" class="cta-button">Create Ad Campaign</a>
+        </div>
+
+        <!-- AI Agent -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <h3>AI Agent (Chat + Call)</h3>
+          <p>Virtual agents that answer FAQs, qualify leads, capture contact info, and schedule follow-ups through chat widgets or phone calls.</p>
+          <a href="#" class="cta-button">Deploy AI Agent</a>
         </div>
       </div>
-    );
-  };
-
-  return (
-    <div className="min-h-screen bg-black text-white font-sans">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b border-yellow-500/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <a href="/" className="text-2xl font-bold text-yellow-400 font-serif">
-              Aireo
-            </a>
-            
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="/services" className="text-gray-300 hover:text-yellow-400 transition-colors">Services</a>
-              <a href="/pricing" className="text-gray-300 hover:text-yellow-400 transition-colors">Pricing</a>
-              <a href="/about" className="text-gray-300 hover:text-yellow-400 transition-colors">About</a>
-              <a href="/contact" className="text-gray-300 hover:text-yellow-400 transition-colors">Contact</a>
-              <a 
-                href="#audit-form" 
-                className="px-6 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-semibold rounded-lg hover:shadow-lg hover:shadow-yellow-500/20 transition-all"
-              >
-                Get Free Audit
-              </a>
-            </nav>
-
-            {/* Mobile menu button */}
-            <button 
-              className="md:hidden text-gray-300"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-yellow-500/10">
-              <div className="flex flex-col space-y-4">
-                <a href="/services" className="text-gray-300 hover:text-yellow-400 transition-colors">Services</a>
-                <a href="/pricing" className="text-gray-300 hover:text-yellow-400 transition-colors">Pricing</a>
-                <a href="/about" className="text-gray-300 hover:text-yellow-400 transition-colors">About</a>
-                <a href="/contact" className="text-gray-300 hover:text-yellow-400 transition-colors">Contact</a>
-                <a 
-                  href="#audit-form" 
-                  className="px-6 py-2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-semibold rounded-lg text-center"
-                >
-                  Get Free Audit
-                </a>
-              </div>
-            </div>
-          )}
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent"></div>
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
-              Agencies take weeks.
-            </span>
-            <br />
-            <span className="text-white">We take minutes.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12">
-            All of Aireo's services are fully AI-run end-to-end, delivering private, human-readable reports 
-            in minutes — not weeks like traditional agencies.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a 
-              href="#audit-form" 
-              className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-yellow-500/30 transition-all duration-300 transform hover:-translate-y-1"
-            >
-              Run Free Audit
-            </a>
-            <a 
-              href="#services" 
-              className="px-8 py-4 border-2 border-yellow-500 text-yellow-400 font-bold text-lg rounded-xl hover:bg-yellow-500 hover:text-black transition-all duration-300"
-            >
-              See AI in Action
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-6">
-              AI-Powered Services
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Experience the full spectrum of AI-driven digital optimization, from audits to content creation and beyond.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Custom Web Development Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-black via-gray-900/50 to-black">
-        <div className="max-w-4xl mx-auto text-center">
-          <div 
-            className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-8"
-            style={{
-              background: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)'
-            }}
-          >
-            <Palette className="w-8 h-8 text-black" />
-          </div>
-          <h2 className="text-4xl font-bold text-yellow-400 mb-6">
-            Personalized Web Development
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            We also provide tailored website design and development, but this is offered on a case-by-case basis.
-          </p>
-          <div className="bg-gray-900/50 border border-yellow-500/20 rounded-2xl p-8 mb-8">
-            <p className="text-lg text-yellow-400 font-semibold mb-4">
-              For custom web development, please contact us directly.
-            </p>
-          </div>
-          <a 
-            href="/contact" 
-            className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-yellow-500/30 transition-all duration-300 flex items-center justify-center gap-3 mx-auto"
-          >
-            <Mail className="w-5 h-5" />
-            Contact Us
-          </a>
-        </div>
-      </section>
-
-      {/* Trust & Proof Section */}
-      <section className="py-20 px-4 bg-black/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-yellow-400 mb-6">
-              Why Aireo
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {trustFeatures.map((feature, index) => (
-              <div key={index} className="text-center p-8 bg-black/30 border border-yellow-500/10 rounded-2xl">
-                <div 
-                  className="w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6"
-                  style={{
-                    background: 'linear-gradient(135deg, #E7C76A 0%, #D4AF37 35%, #B8902E 100%)'
-                  }}
-                >
-                  <feature.icon className="w-8 h-8 text-black" />
-                </div>
-                <h3 className="text-2xl font-bold text-yellow-400 mb-4">{feature.title}</h3>
-                <p className="text-gray-300">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-20 px-4 bg-black border-t border-yellow-500/10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-3xl md:text-4xl font-bold text-yellow-400 mb-6">
-            Stop waiting on agencies. Start optimizing with Aireo.
-          </h3>
-          <p className="text-xl text-gray-400 mb-8">
-            Run a free AI-ready audit. Aireo checks SEO & AEO so you show up on Google and in ChatGPT. Clear fixes, private link to your email.
-          </p>
-          <a 
-            href="#audit-form" 
-            className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-yellow-500/30 transition-all duration-300 inline-flex items-center gap-2"
-          >
-            Run Free Audit
-            <Rocket className="w-5 h-5" />
-          </a>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-black/90 border-t border-yellow-500/10 py-12 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h4 className="text-yellow-400 font-bold text-lg mb-4">Aireo</h4>
-              <p className="text-gray-400">AI-powered SEO & AEO audits in minutes. Show up on Google and in AI tools like ChatGPT.</p>
-            </div>
-            <div>
-              <h4 className="text-yellow-400 font-bold text-lg mb-4">Services</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-yellow-400 transition-colors">AI SEO + AEO Audit</a></li>
-                <li><a href="#" className="hover:text-yellow-400 transition-colors">Mock Optimizer</a></li>
-                <li><a href="#" className="hover:text-yellow-400 transition-colors">AI Content Engine</a></li>
-                <li><a href="#" className="hover:text-yellow-400 transition-colors">AI Ads Engine</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-yellow-400 font-bold text-lg mb-4">Company</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="/about" className="hover:text-yellow-400 transition-colors">About</a></li>
-                <li><a href="/pricing" className="hover:text-yellow-400 transition-colors">Pricing</a></li>
-                <li><a href="/contact" className="hover:text-yellow-400 transition-colors">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-yellow-400 font-bold text-lg mb-4">Legal</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="/privacy" className="hover:text-yellow-400 transition-colors">Privacy Policy</a></li>
-                <li><a href="/terms" className="hover:text-yellow-400 transition-colors">Terms of Service</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-yellow-500/10 pt-8 text-center text-gray-500 text-sm">
-            <p>We use your email only to deliver your private report. We don’t sell or share data. © 2024 Aireo Agency. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
-  );
-};
+  </section>
 
-export default App;
-```
+  <!-- Custom Web Dev -->
+  <section class="section custom-dev">
+    <div class="container">
+      <div class="custom-dev-content">
+        <div class="custom-dev-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+            <path d="M8 21h8"></path>
+            <path d="M12 17v4"></path>
+          </svg>
+        </div>
+        <h2>Personalized Web Development</h2>
+        <p>We also provide tailored website design and development, but this is offered on a case-by-case basis.</p>
+        
+        <div class="custom-note">
+          <p>For custom web development, please contact us directly.</p>
+        </div>
+        
+        <a href="#contact" class="cta-button">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Aireo</h2>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3>Minutes, not weeks</h3>
+          <p>Get actionable insights faster than any traditional agency</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4"></path>
+              <path d="M5 12h14"></path>
+            </svg>
+          </div>
+          <h3>Human-readable reports</h3>
+          <p>Clear, concise recommendations you can understand and implement</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h3>Respects robots.txt</h3>
+          <p>We follow your site's rules and only crawl what you allow</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Stop waiting on agencies. Start optimizing with Aireo.</h2>
+      <p>Run a free AI-ready audit. Aireo checks SEO & AEO so you show up on Google and in ChatGPT. Clear fixes, private link to your email.</p>
+      <a href="#audit-form" class="cta-button">Run Free Audit</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Aireo</h3>
+          <p style="color: #999; margin-top: 16px;">AI-powered SEO & AEO audits in minutes. Show up on Google and in AI tools like ChatGPT.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="#">AI SEO + AEO Audit</a></li>
+            <li><a href="#">Mock Optimizer</a></li>
+            <li><a href="#">AI Content Engine</a></li>
+            <li><a href="#">AI Ads Engine</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>We use your email only to deliver your private report. We don’t sell or share data. © 2024 Aireo Agency. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
