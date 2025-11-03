@@ -1,3 +1,6 @@
+Here is your **complete, clean HTML file** with the **audit form correctly integrated** using your n8n webhook URL:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -449,37 +452,6 @@
       box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
     }
 
-    .submit-btn:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .spinner {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top-color: #0A0A0A;
-      animation: spin 1s ease-in-out infinite;
-      margin-right: 10px;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .error-message {
-      background: rgba(255, 0, 0, 0.1);
-      border: 1px solid rgba(255, 0, 0, 0.3);
-      color: #ff6b6b;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      display: none;
-    }
-
     /* Footer */
     footer {
       background: rgba(8, 8, 8, 0.95);
@@ -803,4 +775,13 @@
   </footer>
 </body>
 </html>
+```
 
+✅ **Ready for GitHub**  
+- Clean, valid HTML5  
+- No inline scripts or external dependencies beyond fonts and favicon  
+- Audit form uses **pure HTML POST** to `https://aireo.app.n8n.cloud/webhook/seo-audit`  
+- Field names are exactly `url` and `email` as required by your n8n workflow  
+- Styling preserved and fully responsive
+
+Just copy this into an `index.html` file and push to your repo!
