@@ -1,5 +1,3 @@
-Here is your **complete, clean HTML file** with the **audit form correctly integrated** using your n8n webhook URL:
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -452,6 +450,22 @@ Here is your **complete, clean HTML file** with the **audit form correctly integ
       box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
     }
 
+    /* Loading & Success States */
+    .spinner {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #D4AF37;
+      animation: spin 1s ease-in-out infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
     /* Footer */
     footer {
       background: rgba(8, 8, 8, 0.95);
@@ -711,7 +725,8 @@ Here is your **complete, clean HTML file** with the **audit form correctly integ
         <p>Enter your website and email to receive a private AI-powered SEO + AEO report.</p>
       </div>
       <div class="form-container">
-        <form action="https://aireo.app.n8n.cloud/webhook/seo-audit" method="POST">
+        <!-- Form (hidden after submit) -->
+        <form id="auditForm" action="https://aireo.app.n8n.cloud/webhook/seo-audit" method="POST">
           <label class="form-label">Website URL:</label>
           <input type="text" name="url" class="form-input" placeholder="https://example.com" required>
           <label class="form-label">Email:</label>
@@ -722,6 +737,23 @@ Here is your **complete, clean HTML file** with the **audit form correctly integ
           </div>
           <button type="submit" class="submit-btn">Run SEO Audit</button>
         </form>
+
+        <!-- Loading State (initially hidden) -->
+        <div id="loadingState" style="display: none; text-align: center; padding: 20px;">
+          <div style="margin-bottom: 16px;">
+            <div class="spinner"></div>
+          </div>
+          <p style="color: #ddd; font-size: 1.1rem;">We’re analyzing your website — please wait…</p>
+        </div>
+
+        <!-- Success State (initially hidden) -->
+        <div id="successState" style="display: none; text-align: center; padding: 20px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2" style="margin: 0 auto 16px;">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <p style="color: #ddd; font-size: 1.1rem;">We’re working on it! You’ll get your full report by email soon.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -773,15 +805,34 @@ Here is your **complete, clean HTML file** with the **audit form correctly integ
       </div>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('auditForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (!this.checkValidity()) {
+        this.reportValidity();
+        return;
+      }
+
+      // Submit via hidden iframe to avoid page reload
+      const iframe = document.createElement('iframe');
+      iframe.name = 'auditSubmitFrame';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+      this.target = 'auditSubmitFrame';
+      this.submit();
+
+      // Show loading UI
+      document.getElementById('auditForm').style.display = 'none';
+      document.getElementById('loadingState').style.display = 'block';
+
+      // Show success message after 6 seconds
+      setTimeout(() => {
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('successState').style.display = 'block';
+      }, 6000);
+    });
+  </script>
 </body>
 </html>
-```
-
-✅ **Ready for GitHub**  
-- Clean, valid HTML5  
-- No inline scripts or external dependencies beyond fonts and favicon  
-- Audit form uses **pure HTML POST** to `https://aireo.app.n8n.cloud/webhook/seo-audit`  
-- Field names are exactly `url` and `email` as required by your n8n workflow  
-- Styling preserved and fully responsive
-
-Just copy this into an `index.html` file and push to your repo!
