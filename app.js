@@ -1,63 +1,42 @@
-const $ = sel => document.querySelector(sel);
-const $$ = sel => document.querySelectorAll(sel);
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('optin-form');
+  const errorBox = document.getElementById('form-error');
+  const successBox = document.getElementById('form-success');
+  const submitBtn = document.getElementById('submit-btn');
 
-const MODES = { audit:"audit", mock:"mock", auto:"auto" };
-let mode = MODES.audit;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-$("#year").textContent = new Date().getFullYear();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const consented = document.getElementById('sms-consent').checked;
 
-$$(".pill").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    if (btn.classList.contains("disabled")) return;
-    $$(".pill").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    mode = btn.dataset.mode;
-    $("#submit").textContent = mode === MODES.mock ? "Generate Mock Fixes" : "Run Free Audit";
+    errorBox.style.display = 'none';
+
+    if (!name || !phone || !consented) {
+      errorBox.style.display = 'block';
+      errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    // Store locally as backup
+    const record = { name, phone, email, consented: true, submittedAt: new Date().toISOString() };
+    const existing = JSON.parse(localStorage.getItem('aireo_submissions') || '[]');
+    existing.push(record);
+    localStorage.setItem('aireo_submissions', JSON.stringify(existing));
+
+    // Show success
+    form.style.display = 'none';
+    successBox.style.display = 'block';
+    successBox.innerHTML = `
+      <strong>Thank you, ${name}.</strong><br>
+      We received your information and will reach out to you at ${phone} shortly.<br>
+      <span style="font-size:12px; opacity:0.8; display:block; margin-top:8px;">No obligation. No upfront cost.</span>
+    `;
+    successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
-});
-
-$("#audit-form").addEventListener("submit", async (e)=>{
-  e.preventDefault();
-  const url = $("#url").value.trim();
-  const email = $("#email").value.trim();
-  const own = $("#own").checked;
-  const alertEl = $("#alert");
-  alertEl.classList.add("hidden");
-  if (!own) return;
-
-  const btn = $("#submit");
-  btn.disabled = true; btn.textContent = "Queuing…";
-
-  try {
-    // TODO: replace with your worker/tunnel endpoint later
-    const ENDPOINT = "https://example.com/jobs"; // <-- change this after you set up your API
-    const res = await fetch(ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Aireo-Key": "dev-placeholder" // change in production
-      },
-      body: JSON.stringify({ target_url: url, email, mode })
-    });
-
-    if (res.status === 429) {
-      throw new Error("We’re getting a lot of love right now. Please try again in a few minutes.");
-    }
-    if (!res.ok) {
-      const data = await res.json().catch(()=>({message:"Something went wrong."}));
-      throw new Error(data.message || "Request failed.");
-    }
-    const data = await res.json();
-    if (data.status === "unavailable" && mode === MODES.auto) {
-      throw new Error("Auto Site Editor is coming soon. Join the waitlist!");
-    }
-    // Simple success UX:
-    window.location.href = "thankyou.html";
-  } catch (err) {
-    alertEl.textContent = err.message || "Error. Please try again.";
-    alertEl.classList.remove("hidden");
-  } finally {
-    btn.disabled = false;
-    btn.textContent = mode === MODES.mock ? "Generate Mock Fixes" : "Run Free Audit";
-  }
 });
