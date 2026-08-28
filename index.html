@@ -29,7 +29,7 @@
       margin: 0;
       padding: 0;
     }
-    h1, h2, h3, .serif-display { font-family: 'Playfair Display', Georgia, serif; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
     a { color: var(--gold-mid); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
@@ -50,8 +50,8 @@
       justify-content: space-between;
     }
     .nav-logo { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--navy); }
-    .nav-sub { font-size: 11px; color: var(--muted); margin-left: 8px; font-family: 'Lora', serif; font-style: italic; }
-    .nav-phone { font-size: 13px; font-weight: 500; color: var(--gold); font-family: 'Lora', serif; }
+    .nav-sub { font-size: 11px; color: var(--muted); margin-left: 8px; font-style: italic; }
+    .nav-phone { font-size: 13px; font-weight: 500; color: var(--gold); }
     .disclaimer-bar {
       background: var(--navy);
       color: rgba(248, 245, 239, 0.75);
@@ -59,10 +59,9 @@
       font-size: 11px;
       padding: 8px 16px;
       letter-spacing: 0.02em;
-      font-family: 'Lora', serif;
     }
     .hero { padding: 80px 0 64px; text-align: center; }
-    .hero-eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; font-family: 'Lora', serif; }
+    .hero-eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
     .hero h1 { font-size: clamp(32px, 5vw, 50px); font-weight: 600; line-height: 1.2; color: var(--navy); margin: 0 0 24px; }
     .hero h1 em { font-style: italic; color: var(--gold-mid); }
     .hero-sub { font-size: 17px; color: var(--muted); max-width: 560px; margin: 0 auto 36px; line-height: 1.75; }
@@ -70,7 +69,6 @@
       display: inline-block;
       background: var(--navy);
       color: var(--cream);
-      font-family: 'Lora', serif;
       font-size: 13px;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -85,27 +83,20 @@
     .section { padding: 64px 0; }
     .section-heading { font-size: 26px; font-weight: 600; color: var(--navy); margin: 0 0 28px; }
     .example-card { background: var(--card); border: 1px solid var(--border); padding: 24px 28px; }
-    .example-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-family: 'Lora', serif; }
-    .example-row { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #374151; padding: 6px 0; border-bottom: 1px solid #f0ebe0; }
+    .example-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .example-row { display: flex; justify-content: space-between; font-size: 14px; color: #374151; padding: 6px 0; border-bottom: 1px solid #f0ebe0; }
     .example-row:last-child { border-bottom: none; }
     .example-total { font-weight: 600; font-size: 15px; color: var(--gold-mid); }
     .example-note { font-size: 12px; color: var(--muted); margin-top: 12px; font-style: italic; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+    @media (max-width: 580px) { .two-col { grid-template-columns: 1fr; } }
     .steps { display: flex; flex-direction: column; gap: 36px; }
     .step { display: flex; gap: 20px; align-items: flex-start; }
     .step-num {
-      flex-shrink: 0;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--navy);
-      color: var(--cream);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 15px;
-      font-weight: 600;
-      margin-top: 2px;
+      flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%;
+      background: var(--navy); color: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; margin-top: 2px;
     }
     .step-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--navy); margin: 0 0 6px; }
     .step-body { font-size: 15px; color: #374151; margin: 0; }
@@ -130,9 +121,11 @@
     .form-heading { font-size: 26px; font-weight: 600; color: var(--navy); margin: 0 0 8px; }
     .form-sub { font-size: 15px; color: var(--muted); margin: 0 0 32px; }
     .field { margin-bottom: 20px; }
-    .field label { display: block; font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 6px; font-family: 'Lora', serif; }
+    .field label { display: block; font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
     .field label .opt { font-weight: 400; font-style: italic; color: var(--muted); font-size: 12px; }
-    .field input[type="text"], .field input[type="tel"], .field input[type="email"] {
+    .field input[type="text"],
+    .field input[type="tel"],
+    .field input[type="email"] {
       width: 100%; padding: 13px 16px; border: 1px solid var(--border);
       background: var(--card); color: var(--navy); font-family: 'Lora', serif;
       font-size: 15px; outline: none; transition: border-color 0.2s;
@@ -141,7 +134,7 @@
     .field input:focus { border-color: var(--gold-mid); }
     .consent-box { border: 1px solid var(--border); background: var(--card); padding: 18px 20px; margin-bottom: 20px; }
     .consent-label { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
-    .consent-label input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; width: 16px; height: 16px; cursor: pointer; accent-color: var(--navy); }
+    .consent-label input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; width: 16px; height: 16px; accent-color: var(--navy); }
     .consent-text { font-size: 13px; color: #374151; line-height: 1.65; }
     .form-error { display: none; background: #FEF2F2; border: 1px solid #FECACA; color: #DC2626; font-size: 13px; padding: 12px 16px; margin-bottom: 16px; }
     .form-success { display: none; background: #F0FDF4; border: 1px solid #BBF7D0; color: #166534; font-size: 14px; padding: 18px 20px; text-align: center; line-height: 1.6; }
@@ -183,7 +176,7 @@
         <span class="nav-logo">Aireoagency L.L.C.</span>
         <span class="nav-sub">Sullivan County, NY</span>
       </div>
-      <a class="nav-phone" href="tel:+1YOURNUMBER">YOUR NUMBER</a>
+      <a class="nav-phone" href="tel:+12679746576">(267) 974-6576</a>
     </div>
   </nav>
 
@@ -202,7 +195,7 @@
 
   <section class="section container">
     <h2 class="section-heading">What is a foreclosure surplus?</h2>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start;">
+    <div class="two-col">
       <div>
         <p style="font-size:15px; color:#374151; margin:0 0 16px;">When a home is sold in foreclosure, the lender is owed a set amount — the unpaid mortgage balance plus fees. If the property sells for <em>more</em> than that amount, the difference is called a <strong>surplus</strong>.</p>
         <p style="font-size:15px; color:#374151; margin:0;">That surplus doesn't go to the bank. Under New York law, it belongs to the former homeowner. But it doesn't arrive automatically — it sits with the court until someone files a claim.</p>
@@ -260,7 +253,7 @@
         <p class="who-detail"><strong>Managing Member:</strong> Shees Kazmi</p>
         <p class="who-detail"><strong>Location:</strong> Monticello, NY 12701</p>
         <p class="who-detail"><strong>Email:</strong> support@aireoagency.com</p>
-        <p class="who-detail"><strong>Phone:</strong> <a href="tel:+1YOURNUMBER">YOUR NUMBER</a></p>
+        <p class="who-detail"><strong>Phone:</strong> <a href="tel:+12679746576">(267) 974-6576</a></p>
       </div>
       <div class="seal-wrap">
         <div class="seal">
@@ -298,9 +291,7 @@
         </label>
       </div>
       <button type="submit" class="btn-submit" id="submit-btn">Submit my information</button>
-      <div id="form-success" class="form-success">
-        Thank you — we received your information and will be in touch shortly.
-      </div>
+      <div id="form-success" class="form-success"></div>
       <p class="form-fine">By submitting this form you consent to be contacted by Aireoagency L.L.C. by phone or text. We do not sell your information. See our <a href="#privacy">Privacy Policy</a>.</p>
     </form>
   </section>
@@ -352,6 +343,52 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('optin-form');
+      const errorBox = document.getElementById('form-error');
+      const successBox = document.getElementById('form-success');
+      const submitBtn = document.getElementById('submit-btn');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const consented = document.getElementById('sms-consent').checked;
+
+        errorBox.style.display = 'none';
+
+        if (!name || !phone || !consented) {
+          errorBox.style.display = 'block';
+          errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting…';
+
+        const record = {
+          name,
+          phone,
+          email: document.getElementById('email').value.trim(),
+          consented: true,
+          submittedAt: new Date().toISOString()
+        };
+        const existing = JSON.parse(localStorage.getItem('aireo_submissions') || '[]');
+        existing.push(record);
+        localStorage.setItem('aireo_submissions', JSON.stringify(existing));
+
+        form.style.display = 'none';
+        successBox.style.display = 'block';
+        successBox.innerHTML = `
+          <strong>Thank you, ${name}.</strong><br>
+          We received your information and will reach out to you at ${phone} shortly.<br>
+          <span style="font-size:12px; opacity:0.8; display:block; margin-top:8px;">No obligation. No upfront cost.</span>
+        `;
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  </script>
+
 </body>
 </html>
