@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aireoagency — Letter Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #18293A;
+      --gold: #7A5C14;
+      --gold-mid: #A07820;
+      --border: #D8CCAE;
+      --muted: #6B7A8A;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #E8E4DC;
+      font-family: 'Lora', Georgia, serif;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--navy);
+      padding: 40px 20px;
+    }
+    .controls {
+      max-width: 680px;
+      margin: 0 auto 28px;
+      background: var(--navy);
+      padding: 20px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: flex-end;
+    }
+    .controls h2 {
+      width: 100%;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: #F8F5EF;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .ctrl-field { display: flex; flex-direction: column; gap: 4px; flex: 1 1 200px; }
+    .ctrl-field label { font-size: 11px; color: rgba(248,245,239,0.6); letter-spacing: 0.08em; text-transform: uppercase; }
+    .ctrl-field input {
+      padding: 8px 10px;
+      border: 1px solid rgba(248,245,239,0.2);
+      background: rgba(248,245,239,0.08);
+      color: #F8F5EF;
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      outline: none;
+      width: 100%;
+    }
+    .ctrl-field input:focus { border-color: rgba(248,245,239,0.5); }
+    .ctrl-field input::placeholder { color: rgba(248,245,239,0.3); }
+    .btn-print {
+      padding: 10px 24px;
+      background: #A07820;
+      color: #F8F5EF;
+      border: none;
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      align-self: flex-end;
+      white-space: nowrap;
+    }
+    .btn-print:hover { opacity: 0.87; }
+    .letter {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #FFFDF9;
+      padding: 60px 64px;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+      min-height: 940px;
+    }
+    .letter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--navy);
+      margin-bottom: 32px;
+    }
+    .brand-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--navy); display: block; }
+    .brand-tagline { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 3px; }
+    .header-contact { text-align: right; font-size: 11.5px; color: var(--muted); line-height: 1.8; }
+    .letter-date { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .recipient { margin-bottom: 28px; font-size: 14px; line-height: 1.6; }
+    .re-line {
+      background: #F4F0E6;
+      border-left: 3px solid var(--gold);
+      padding: 10px 16px;
+      margin-bottom: 28px;
+      font-size: 13px;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+    .letter-body p { margin-bottom: 18px; font-size: 14.5px; color: #1e2e3e; }
+    .section-label { font-weight: 600; color: var(--navy); }
+    .amount-box {
+      border: 1px solid var(--border);
+      padding: 14px 20px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+    }
+    .amount-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .amount-value { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: var(--gold-mid); }
+    .disclosure {
+      background: #F4F0E6;
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      margin: 20px 0;
+      font-size: 12.5px;
+      color: #374151;
+      line-height: 1.65;
+    }
+    .signature { margin-top: 32px; }
+    .sig-close { font-size: 14.5px; margin-bottom: 40px; }
+    .sig-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 500; color: var(--navy); font-style: italic; }
+    .sig-title { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .letter-footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .footer-disclaimer { font-size: 10.5px; color: var(--muted); line-height: 1.65; max-width: 460px; }
+    .qr-wrap { text-align: center; flex-shrink: 0; }
+    .qr-wrap img { width: 80px; height: 80px; display: block; }
+    .qr-label { font-size: 9px; color: var(--muted); margin-top: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+    @media print {
+      body { background: white; padding: 0; }
+      .controls { display: none; }
+      .letter { box-shadow: none; padding: 48px 56px; max-width: 100%; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls">
+    <h2>Fill in the details, then click Print</h2>
+    <div class="ctrl-field">
+      <label>Recipient name</label>
+      <input type="text" id="f-name" placeholder="John Smith" oninput="update()">
+    </div>
+    <div class="ctrl-field">
+      <label>Recipient address</label>
+      <input type="text" id="f-addr1" placeholder="123 Main St" oninput="update()">
+    </div>
+    <div class="ctrl-field">
+      <label>City, State ZIP</label>
+      <input type="text" id="f-addr2" placeholder="Brooklyn, NY 11201" oninput="update()">
+    </div>
+    <div class="ctrl-field">
+      <label>Property address</label>
+      <input type="text" id="f-prop" placeholder="456 Oak Ave, Newburgh, NY" oninput="update()">
+    </div>
+    <div class="ctrl-field">
+      <label>Case number</label>
+      <input type="text" id="f-case" placeholder="2022-1234" oninput="update()">
+    </div>
+    <div class="ctrl-field">
+      <label>County</label>
+      <input type="text" id="f-county" placeholder="Orange" oninput="update()">
+    </div>
+    <div class="ctrl-field">
+      <label>Surplus amount</label>
+      <input type="text" id="f-amount" placeholder="$42,500" oninput="update()">
+    </div>
+    <div class="ctrl-field">
+      <label>First name only</label>
+      <input type="text" id="f-first" placeholder="John" oninput="update()">
+    </div>
+    <button class="btn-print" onclick="window.print()">Print letter &rarr;</button>
+  </div>
+
+  <div class="letter">
+    <div class="letter-header">
+      <div>
+        <span class="brand-name">Aireoagency L.L.C.</span>
+        <span class="brand-tagline">Foreclosure Surplus Recovery</span>
+      </div>
+      <div class="header-contact">
+        Monticello, NY 12701<br>
+        (267) 974-6576<br>
+        aireoagency.com<br>
+        support@aireoagency.com
+      </div>
+    </div>
+
+    <p class="letter-date" id="l-date"></p>
+
+    <div class="recipient">
+      <strong id="l-name">[Recipient name]</strong><br>
+      <span id="l-addr1">[Address line 1]</span><br>
+      <span id="l-addr2">[City, State ZIP]</span>
+    </div>
+
+    <div class="re-line">
+      <strong>Re:</strong> Court-held surplus funds &mdash; <span id="l-prop">[Property address]</span><br>
+      Case no. <span id="l-case">[Case number]</span> &mdash; <span id="l-county">[County]</span> County Supreme Court
+    </div>
+
+    <div class="letter-body">
+      <p>Dear <span id="l-first">[First name]</span>,</p>
+
+      <p>My name is Shees Kazmi. I run a research firm in Sullivan County called Aireoagency L.L.C. I'm writing because public court records show that after the foreclosure sale of your former property, money was left over after the mortgage and costs were paid. That money is being held by the court, and you may be entitled to it.</p>
+
+      <div class="amount-box">
+        <span class="amount-label">Approximate funds held by court</span>
+        <span class="amount-value" id="l-amount">[Amount]</span>
+      </div>
+
+      <p><span class="section-label">You can pursue this without us.</span> You have the right to contact the court directly at no cost and claim these funds on your own. Our service is entirely optional.</p>
+
+      <p><span class="section-label">What we do.</span> We research the case file, verify your identity and ownership, and prepare everything a New York real estate attorney needs to file the claim on your behalf. Our fee is 20% of whatever you recover — and only if the claim succeeds. You pay nothing upfront and nothing if it fails.</p>
+
+      <p><span class="section-label">We are a private company, not a government office.</span> Aireoagency L.L.C. is a registered New York LLC (DOS ID: DOS1336-2026-045130). We found your name through public foreclosure court records. No government agency will contact you about this — if someone else does and claims to be from the government, treat it as a red flag.</p>
+
+      <div class="disclosure">
+        <strong>Important:</strong> You are not required to use our services to recover these funds. This letter is not from a government agency or court.
+      </div>
+
+      <p>To reach me, call or text <strong>(267) 974-6576</strong>, or scan the QR code below to visit our website. No obligation, no deadline, no pressure.</p>
+    </div>
+
+    <div class="signature">
+      <p class="sig-close">Sincerely,</p>
+      <p class="sig-name">Shees Kazmi</p>
+      <p class="sig-title">Managing Member &mdash; Aireoagency L.L.C.</p>
+    </div>
+
+    <div class="letter-footer">
+      <p class="footer-disclaimer">
+        This is not a government notice. Aireoagency L.L.C. is a private administrative research firm. We are not attorneys and do not provide legal advice. Any legal work is performed by an independent New York attorney under a separate agreement directly with you. NY DOS Registration ID: DOS1336-2026-045130.
+      </p>
+      <div class="qr-wrap">
+        <img src="qr-code.png" alt="Scan to visit aireoagency.com">
+        <p class="qr-label">Scan to visit<br>our website</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('l-date').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    function update() {
+      const pairs = [
+        ['f-name', 'l-name'], ['f-addr1', 'l-addr1'], ['f-addr2', 'l-addr2'],
+        ['f-prop', 'l-prop'], ['f-case', 'l-case'], ['f-county', 'l-county'],
+        ['f-amount', 'l-amount'], ['f-first', 'l-first']
+      ];
+      pairs.forEach(([inputId, targetId]) => {
+        const val = document.getElementById(inputId).value.trim();
+        const el = document.getElementById(targetId);
+        if (el) el.textContent = val || '[' + inputId.replace('f-', '') + ']';
+      });
+    }
+  </script>
+
+</body>
+</html>
