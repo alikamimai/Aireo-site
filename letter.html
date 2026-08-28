@@ -251,21 +251,28 @@
   </div>
 
   <script>
-    document.getElementById('l-date').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  document.getElementById('l-date').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-    function update() {
-      const pairs = [
-        ['f-name', 'l-name'], ['f-addr1', 'l-addr1'], ['f-addr2', 'l-addr2'],
-        ['f-prop', 'l-prop'], ['f-case', 'l-case'], ['f-county', 'l-county'],
-        ['f-amount', 'l-amount'], ['f-first', 'l-first']
-      ];
-      pairs.forEach(([inputId, targetId]) => {
-        const val = document.getElementById(inputId).value.trim();
-        const el = document.getElementById(targetId);
-        if (el) el.textContent = val || '[' + inputId.replace('f-', '') + ']';
-      });
-    }
-  </script>
+  var pairs = [
+    ['f-name','l-name'],['f-addr1','l-addr1'],['f-addr2','l-addr2'],
+    ['f-prop','l-prop'],['f-case','l-case'],['f-county','l-county'],
+    ['f-amount','l-amount'],['f-first','l-first']
+  ];
+
+  function update() {
+    pairs.forEach(function(p) {
+      var val = document.getElementById(p[0]).value;
+      var el = document.getElementById(p[1]);
+      if (el) el.textContent = val || '';
+    });
+  }
+
+  pairs.forEach(function(p) {
+    var input = document.getElementById(p[0]);
+    if (input) input.addEventListener('input', update);
+  });
+</script>
+
 
 </body>
 </html>
