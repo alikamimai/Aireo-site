@@ -16,74 +16,66 @@
   </script>
   <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
   <style>
-    :root {
-      --cream: #F8F5EF;
-      --navy: #18293A;
-      --gold: #7A5C14;
-      --gold-mid: #A07820;
-      --border: #D8CCAE;
-      --muted: #6B7A8A;
-      --card: #FFFFFF;
-    }
+    :root { --cream:#F8F5EF; --navy:#18293A; --gold:#7A5C14; --gold-mid:#A07820; --border:#D8CCAE; --muted:#6B7A8A; --card:#FFFFFF; }
     * { box-sizing: border-box; }
-    body { background-color: var(--cream); color: var(--navy); font-family: 'Lora', Georgia, serif; font-size: 16px; line-height: 1.7; margin: 0; padding: 0; }
-    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
-    a { color: var(--gold-mid); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container { max-width: 640px; margin: 0 auto; padding: 0 24px; }
-    nav { border-bottom: 1px solid var(--border); background: rgba(248,245,239,0.94); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; }
-    .nav-inner { max-width: 640px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: var(--navy); }
-    .disclaimer-bar { background: var(--navy); color: rgba(248,245,239,0.7); text-align: center; font-size: 11px; padding: 8px 16px; }
-    .screen { display: none; }
-    .screen.active { display: block; }
-    .code-screen { padding: 80px 0 60px; text-align: center; }
-    .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-family: 'Lora', serif; }
-    .code-screen h1 { font-size: 34px; font-weight: 600; margin: 0 0 14px; }
-    .code-screen p { font-size: 15px; color: var(--muted); margin: 0 auto 36px; max-width: 460px; }
-    .code-input-wrap { display: flex; max-width: 420px; margin: 0 auto 12px; }
-    .code-input { flex: 1; padding: 16px 20px; border: 1px solid var(--border); border-right: none; background: var(--card); color: var(--navy); font-family: 'Lora', serif; font-size: 20px; letter-spacing: 0.14em; text-transform: uppercase; outline: none; }
-    .code-input:focus { border-color: var(--gold-mid); }
-    .code-btn { background: var(--navy); color: var(--cream); border: none; padding: 16px 22px; font-family: 'Lora', serif; font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: opacity 0.2s; }
-    .code-btn:hover { opacity: 0.87; }
-    .code-error { display: none; color: #DC2626; font-size: 13px; margin-top: 8px; }
-    .code-hint { font-size: 12px; color: var(--muted); margin-top: 14px; }
-    .case-screen { padding: 40px 0 64px; }
-    .case-banner { background: var(--navy); color: var(--cream); padding: 28px 32px; margin-bottom: 40px; }
-    .case-banner-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(248,245,239,0.55); margin-bottom: 6px; }
-    .case-banner-name { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; margin-bottom: 3px; }
-    .case-banner-address { font-size: 14px; color: rgba(248,245,239,0.65); margin-bottom: 20px; }
-    .case-banner-amount { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 600; color: #fcd34d; line-height: 1; }
-    .case-banner-amount-label { font-size: 12px; color: rgba(248,245,239,0.55); margin-top: 4px; }
-    .case-meta { display: flex; gap: 28px; margin-top: 20px; flex-wrap: wrap; }
-    .case-meta-item strong { display: block; font-size: 13px; color: rgba(248,245,239,0.9); }
-    .case-meta-item span { font-size: 11px; color: rgba(248,245,239,0.5); }
-    .section-heading { font-size: 20px; font-weight: 600; margin: 0 0 6px; }
-    .section-sub { font-size: 14px; color: var(--muted); margin: 0 0 28px; }
-    .upload-block { border: 1px solid var(--border); background: var(--card); padding: 24px 26px; margin-bottom: 16px; }
-    .upload-block-num { display: inline-block; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--cream); font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 600; text-align: center; line-height: 26px; margin-right: 10px; vertical-align: middle; }
-    .upload-block-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; display: inline; vertical-align: middle; }
-    .upload-block-desc { font-size: 14px; color: #374151; margin: 10px 0 18px; }
-    .upload-block-hint { font-size: 12px; color: var(--muted); margin-top: 10px; font-style: italic; }
-    .uploadcare--widget__button { background: var(--navy) !important; color: var(--cream) !important; font-family: 'Lora', serif !important; font-size: 13px !important; border-radius: 0 !important; padding: 11px 22px !important; }
-    .upload-status { display: none; margin-top: 10px; padding: 10px 14px; background: #F0FDF4; border: 1px solid #BBF7D0; color: #166534; font-size: 13px; }
-    .confirm-section { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); }
-    .field { margin-bottom: 18px; }
-    .field label { display: block; font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
-    .field input { width: 100%; padding: 13px 16px; border: 1px solid var(--border); background: var(--card); color: var(--navy); font-family: 'Lora', serif; font-size: 15px; outline: none; border-radius: 0; transition: border-color 0.2s; }
-    .field input:focus { border-color: var(--gold-mid); }
-    .btn-submit { width: 100%; background: var(--navy); color: var(--cream); border: none; padding: 17px 24px; font-family: 'Lora', serif; font-size: 14px; font-weight: 500; letter-spacing: 0.06em; cursor: pointer; transition: opacity 0.2s; }
-    .btn-submit:hover { opacity: 0.87; }
-    .btn-submit:disabled { opacity: 0.45; cursor: not-allowed; }
-    .form-error { display: none; background: #FEF2F2; border: 1px solid #FECACA; color: #DC2626; font-size: 13px; padding: 12px 16px; margin-bottom: 16px; }
-    .success-screen { padding: 80px 0; text-align: center; }
-    .success-icon { font-size: 52px; margin-bottom: 20px; }
-    .success-screen h1 { font-size: 30px; font-weight: 600; margin: 0 0 14px; }
-    .success-screen p { font-size: 15px; color: var(--muted); max-width: 460px; margin: 0 auto 16px; }
-    .success-box { background: var(--card); border: 1px solid var(--border); padding: 22px 26px; max-width: 440px; margin: 28px auto 0; text-align: left; }
-    .success-box p { font-size: 14px; color: #374151; margin: 0 0 8px; }
-    footer { border-top: 1px solid var(--border); padding: 28px 0; }
-    .footer-fine { font-size: 11px; color: var(--muted); line-height: 1.7; }
+    body { background-color:var(--cream); color:var(--navy); font-family:'Lora',Georgia,serif; font-size:16px; line-height:1.7; margin:0; padding:0; }
+    h1,h2,h3 { font-family:'Playfair Display',Georgia,serif; }
+    a { color:var(--gold-mid); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .container { max-width:640px; margin:0 auto; padding:0 24px; }
+    nav { border-bottom:1px solid var(--border); background:rgba(248,245,239,0.94); backdrop-filter:blur(8px); position:sticky; top:0; z-index:100; }
+    .nav-inner { max-width:640px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:16px; font-weight:600; color:var(--navy); }
+    .disclaimer-bar { background:var(--navy); color:rgba(248,245,239,0.7); text-align:center; font-size:11px; padding:8px 16px; }
+    .screen { display:none; }
+    .screen.active { display:block; }
+    .code-screen { padding:80px 0 60px; text-align:center; }
+    .eyebrow { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; font-family:'Lora',serif; }
+    .code-screen h1 { font-size:34px; font-weight:600; margin:0 0 14px; }
+    .code-screen p { font-size:15px; color:var(--muted); margin:0 auto 36px; max-width:460px; }
+    .code-input-wrap { display:flex; max-width:420px; margin:0 auto 12px; }
+    .code-input { flex:1; padding:16px 20px; border:1px solid var(--border); border-right:none; background:var(--card); color:var(--navy); font-family:'Lora',serif; font-size:20px; letter-spacing:0.14em; text-transform:uppercase; outline:none; }
+    .code-input:focus { border-color:var(--gold-mid); }
+    .code-btn { background:var(--navy); color:var(--cream); border:none; padding:16px 22px; font-family:'Lora',serif; font-size:14px; font-weight:500; cursor:pointer; white-space:nowrap; transition:opacity 0.2s; }
+    .code-btn:hover { opacity:0.87; }
+    .code-error { display:none; color:#DC2626; font-size:13px; margin-top:8px; }
+    .code-hint { font-size:12px; color:var(--muted); margin-top:14px; }
+    .case-screen { padding:40px 0 64px; }
+    .case-banner { background:var(--navy); color:var(--cream); padding:28px 32px; margin-bottom:40px; }
+    .case-banner-label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(248,245,239,0.55); margin-bottom:6px; }
+    .case-banner-name { font-family:'Playfair Display',serif; font-size:21px; font-weight:600; margin-bottom:3px; }
+    .case-banner-address { font-size:14px; color:rgba(248,245,239,0.65); margin-bottom:20px; }
+    .case-banner-amount { font-family:'Playfair Display',serif; font-size:40px; font-weight:600; color:#fcd34d; line-height:1; }
+    .case-banner-amount-label { font-size:12px; color:rgba(248,245,239,0.55); margin-top:4px; }
+    .case-meta { display:flex; gap:28px; margin-top:20px; flex-wrap:wrap; }
+    .case-meta-item strong { display:block; font-size:13px; color:rgba(248,245,239,0.9); }
+    .case-meta-item span { font-size:11px; color:rgba(248,245,239,0.5); }
+    .section-heading { font-size:20px; font-weight:600; margin:0 0 6px; }
+    .section-sub { font-size:14px; color:var(--muted); margin:0 0 28px; }
+    .upload-block { border:1px solid var(--border); background:var(--card); padding:24px 26px; margin-bottom:16px; }
+    .upload-block-num { display:inline-block; width:26px; height:26px; border-radius:50%; background:var(--navy); color:var(--cream); font-family:'Playfair Display',serif; font-size:13px; font-weight:600; text-align:center; line-height:26px; margin-right:10px; vertical-align:middle; }
+    .upload-block-title { font-family:'Playfair Display',serif; font-size:17px; font-weight:600; display:inline; vertical-align:middle; }
+    .upload-block-desc { font-size:14px; color:#374151; margin:10px 0 18px; }
+    .upload-block-hint { font-size:12px; color:var(--muted); margin-top:10px; font-style:italic; }
+    .uploadcare--widget__button { background:var(--navy) !important; color:var(--cream) !important; font-family:'Lora',serif !important; font-size:13px !important; border-radius:0 !important; padding:11px 22px !important; }
+    .upload-status { display:none; margin-top:10px; padding:10px 14px; background:#F0FDF4; border:1px solid #BBF7D0; color:#166534; font-size:13px; }
+    .confirm-section { margin-top:40px; padding-top:32px; border-top:1px solid var(--border); }
+    .field { margin-bottom:18px; }
+    .field label { display:block; font-size:13px; font-weight:500; color:var(--navy); margin-bottom:6px; }
+    .field input { width:100%; padding:13px 16px; border:1px solid var(--border); background:var(--card); color:var(--navy); font-family:'Lora',serif; font-size:15px; outline:none; border-radius:0; transition:border-color 0.2s; }
+    .field input:focus { border-color:var(--gold-mid); }
+    .btn-submit { width:100%; background:var(--navy); color:var(--cream); border:none; padding:17px 24px; font-family:'Lora',serif; font-size:14px; font-weight:500; letter-spacing:0.06em; cursor:pointer; transition:opacity 0.2s; }
+    .btn-submit:hover { opacity:0.87; }
+    .btn-submit:disabled { opacity:0.45; cursor:not-allowed; }
+    .form-error { display:none; background:#FEF2F2; border:1px solid #FECACA; color:#DC2626; font-size:13px; padding:12px 16px; margin-bottom:16px; }
+    .success-screen { padding:80px 0; text-align:center; }
+    .success-icon { font-size:52px; margin-bottom:20px; }
+    .success-screen h1 { font-size:30px; font-weight:600; margin:0 0 14px; }
+    .success-screen p { font-size:15px; color:var(--muted); max-width:460px; margin:0 auto 16px; }
+    .success-box { background:var(--card); border:1px solid var(--border); padding:22px 26px; max-width:440px; margin:28px auto 0; text-align:left; }
+    .success-box p { font-size:14px; color:#374151; margin:0 0 8px; }
+    footer { border-top:1px solid var(--border); padding:28px 0; }
+    .footer-fine { font-size:11px; color:var(--muted); line-height:1.7; }
   </style>
 </head>
 <body>
@@ -91,7 +83,7 @@
 <nav>
   <div class="nav-inner">
     <span class="nav-logo">Aireoagency L.L.C.</span>
-    <a href="index.html" style="font-size:13px; color:var(--gold-mid);">&larr; Main site</a>
+    <a href="index.html" style="font-size:13px;color:var(--gold-mid);">&larr; Main site</a>
   </div>
 </nav>
 <div class="disclaimer-bar">Not a government website &mdash; Aireoagency L.L.C. is a private research firm</div>
@@ -151,7 +143,7 @@
         <div class="upload-block">
           <span class="upload-block-num">2</span>
           <span class="upload-block-title">Completed W-9 form</span>
-          <p class="upload-block-desc">Download the W-9, fill in your name, address, and Social Security Number, sign it, then upload it here.<br><a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank" style="font-size:13px;">Download blank W-9 from IRS &rarr;</a></p>
+          <p class="upload-block-desc">Download the W-9, fill in your name, address, and Social Security Number, sign it, then upload here.<br><a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank" style="font-size:13px;">Download blank W-9 from IRS &rarr;</a></p>
           <input type="hidden" role="uploadcare-uploader" id="uc-w9" data-public-key="05eef1166248ddd6ffba" data-name="w9" data-images-only="false" data-system-dialog="true">
           <div class="upload-status" id="status-w9">&#10003; W-9 uploaded successfully</div>
           <p class="upload-block-hint">Accepted: JPG, PNG, PDF &mdash; max 10 MB</p>
@@ -160,7 +152,7 @@
         <div class="upload-block">
           <span class="upload-block-num">3</span>
           <span class="upload-block-title">Signed research agreement</span>
-          <p class="upload-block-desc">Upload the notarized research agreement you signed with Shees. Haven't signed yet? Call (267) 974-6576 and we'll set that up first.</p>
+          <p class="upload-block-desc">Upload the notarized research agreement you signed with Shees. Haven't signed yet? Call (267) 974-6576 first.</p>
           <input type="hidden" role="uploadcare-uploader" id="uc-agreement" data-public-key="05eef1166248ddd6ffba" data-name="agreement" data-images-only="false" data-system-dialog="true">
           <div class="upload-status" id="status-agreement">&#10003; Agreement uploaded successfully</div>
           <p class="upload-block-hint">Accepted: JPG, PNG, PDF &mdash; max 25 MB</p>
@@ -183,4 +175,135 @@
             <input type="email" name="email" placeholder="your@email.com" required>
           </div>
           <button type="submit" class="btn-submit" id="submit-btn">Submit my documents &rarr;</button>
-          <p style="font-size:11px; color:var(--muted); margin-top:12px;">Your files are stored securely. We do not sell your infor
+          <p style="font-size:11px;color:var(--muted);margin-top:12px;">Files stored securely. We do not sell your information. <a href="index.html#privacy">Privacy Policy</a>.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="screen-success" class="screen">
+  <div class="container">
+    <div class="success-screen">
+      <div class="success-icon">&#10003;</div>
+      <h1>Your file is in.</h1>
+      <p>We received all your documents. Shees will review everything and reach out within 1 business day.</p>
+      <p style="font-size:14px;">Questions? Call or text <strong>(267) 974-6576</strong> anytime.</p>
+      <div class="success-box">
+        <p><strong>What happens next:</strong></p>
+        <p>1. We verify your identity and ownership against the court record.</p>
+        <p>2. We connect you with a licensed New York attorney who files your claim.</p>
+        <p style="margin:0;">3. When the court releases your funds, our 20% fee comes out of what's recovered. You pay nothing upfront.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-fine">
+      <p>Aireoagency L.L.C. &mdash; Sullivan County, NY &mdash; NY DOS ID: DOS1336-2026-045130</p>
+      <p>Not a government website. Not a law firm. All legal work performed by independent NY-licensed attorneys.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const CASES = {
+  'SC-0001': {
+    name:     'Yolanda Thomas & Kelly N. Thomas',
+    address:  '91 Rockland Rd, Roscoe, NY 12776',
+    amount:   '$152,963',
+    county:   'Sullivan',
+    index:    '2023-1387',
+    deadline: 'Nov 19, 2028'
+  }
+};
+
+function initUploaders() {
+  try {
+    uploadcare.Widget('#uc-id').onUploadComplete(function(info) {
+      document.getElementById('id-url').value = info.cdnUrl;
+      document.getElementById('status-id').style.display = 'block';
+    });
+    uploadcare.Widget('#uc-w9').onUploadComplete(function(info) {
+      document.getElementById('w9-url').value = info.cdnUrl;
+      document.getElementById('status-w9').style.display = 'block';
+    });
+    uploadcare.Widget('#uc-agreement').onUploadComplete(function(info) {
+      document.getElementById('agreement-url').value = info.cdnUrl;
+      document.getElementById('status-agreement').style.display = 'block';
+    });
+  } catch(e) { console.log('Uploadcare deferred', e); }
+}
+
+function lookupCode() {
+  const code = document.getElementById('code-input').value.trim().toUpperCase();
+  const errorEl = document.getElementById('code-error');
+  const c = CASES[code];
+  if (!c) { errorEl.style.display = 'block'; return; }
+  errorEl.style.display = 'none';
+  document.getElementById('case-name').textContent = c.name;
+  document.getElementById('case-address').textContent = c.address;
+  document.getElementById('case-amount').textContent = c.amount;
+  document.getElementById('case-county').textContent = c.county;
+  document.getElementById('case-index').textContent = c.index;
+  document.getElementById('case-deadline').textContent = c.deadline;
+  document.getElementById('hidden-code').value = code;
+  document.getElementById('hidden-case-name').value = c.name;
+  document.getElementById('hidden-property').value = c.address;
+  document.getElementById('screen-code').classList.remove('active');
+  document.getElementById('screen-case').classList.add('active');
+  window.scrollTo(0, 0);
+  initUploaders();
+}
+
+document.getElementById('code-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') lookupCode();
+});
+
+document.getElementById('case-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const errorEl = document.getElementById('form-error');
+  const name  = this.querySelector('[name="contact_name"]').value.trim();
+  const phone = this.querySelector('[name="phone"]').value.trim();
+  const email = this.querySelector('[name="email"]').value.trim();
+  const idUrl = document.getElementById('id-url').value;
+  const w9Url = document.getElementById('w9-url').value;
+  const agUrl = document.getElementById('agreement-url').value;
+  if (!name || !phone || !email) {
+    errorEl.style.display = 'block';
+    errorEl.textContent = 'Please fill in your name, phone, and email.';
+    return;
+  }
+  if (!idUrl || !w9Url || !agUrl) {
+    errorEl.style.display = 'block';
+    errorEl.textContent = 'Please upload all three documents before submitting.';
+    return;
+  }
+  errorEl.style.display = 'none';
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+  try {
+    const res = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      document.getElementById('screen-case').classList.remove('active');
+      document.getElementById('screen-success').classList.add('active');
+      window.scrollTo(0, 0);
+    } else { throw new Error(); }
+  } catch {
+    btn.disabled = false;
+    btn.textContent = 'Submit my documents →';
+    errorEl.style.display = 'block';
+    errorEl.textContent = 'Something went wrong. Call us at (267) 974-6576.';
+  }
+});
+</script>
+
+</body>
+</html>
